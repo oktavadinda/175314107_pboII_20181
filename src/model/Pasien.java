@@ -10,5 +10,12 @@ package model;
  * @author admin
  */
 public class Pasien {
+    private String noRekamMedis;
     private String nama;
+    private String alamat;
+    private String tempatLahir;
+    private int tanggalLahir;
+    private int bulanLahir;
+    private int tahunLahir;
+    
 }
