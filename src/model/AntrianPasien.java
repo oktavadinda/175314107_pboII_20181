@@ -6,28 +6,33 @@
 package model;
 
 /**
+ * buat class antrian pasien buat attributte tanggaAntrian, bulanAntrian,
+ * tahunAntrian bertipe integer
  *
  * @author asus
- */
-// buat class antrian pasien 
-//buat attributte tanggaAntrian, bulanAntrian, tahunAntrian bertipe integer
-public class AntrianPasien {
+ */ public class AntrianPasien {
 
-    private int tanggalAntrian;
-    private int bulanAntrian;
-    private int tahunAntrian;
-    private Klinik klinik; //membuat attributte klinik menggunakan tipe class klinik
+    private int tanggalAntrian; //
+    private int bulanAntrian; // attributte bulan antrian bertipe integer
+    private int tahunAntrian; // attributte tahun antrian bertipe integer
+    private Klinik klinik; // attributte klinik menggunakan tipe class klinik
     private Pasien daftarPasien[]; // attributte daftarPasien[] menggunakan kelas Pasien
 // buat method getTanggalAntrian
-/**
- * fungsi membaca tanggal lahir
- * @return 
- */
+
+    /**
+     * fungsi membaca tanggal lahir
+     *
+     * @return
+     */
     public int getTanggalAntrian() {
         return tanggalAntrian;
     }
 //buat method setTanggalAntrian menggunakan throws Exception
-
+/**
+ * fungsi membaca tanggal antrian dengan parameter menggunakan tipe integer
+ * @param tanggalAntrian
+ * @throws Exception 
+ */
     public void setTanggalAntrian(int tanggalAntrian) throws Exception {
         if (tanggalAntrian > 0 && tanggalAntrian < 32) { //buat looping menggunakan if dengan parameter tanggal antrian dari 1-31
             this.tanggalAntrian = tanggalAntrian;
@@ -35,11 +40,12 @@ public class AntrianPasien {
             throw new Exception("Tanggal antrian salah"); //akan memunculkan output "Tanggal antrian salah"
         }
 
-    }
-// buat getBulanAntrian bertipe integer
-
-    public int getBulanAntrian() {
-        return bulanAntrian;
+    } /**
+     * fungsi method ini untuk membaca bulan antrian 
+     * @return 
+     */
+    public int getBulanAntrian() {// buat getBulanAntrian bertipe integer
+        return bulanAntrian; 
     }
 //buat method setBulanAntrian menggunakan throws Exception
 

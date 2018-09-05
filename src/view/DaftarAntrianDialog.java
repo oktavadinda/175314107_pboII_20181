@@ -15,36 +15,51 @@ import javax.swing.JTextField;
  * @author admin
  */
 public class DaftarAntrianDialog extends JDialog {
+
     private JLabel judulLabel;
     private JLabel namaLabel;
+    private JLabel alamatLabel;
+    private JLabel noRekamMedisLabel;
+    private JTextField noRekamMedisText;
+    private JTextField alamatText;
+    private JTextField judulText;
     private JTextField namaText;
     private JButton saveButton;
-    
-    public DaftarAntrianDialog(){
-      init();  
-    }
-    public DaftarAntrianDialog(String title){
-        this.setTitle(title);
-        init();
-    }
-    public void init(){
+
+    public void init() {
+
         this.setLayout(null);
-        
-        judulLabel = new JLabel("Judul Label");
-        judulLabel.setBounds(50, 250, 50, 10);
+        judulLabel = new JLabel(" Daftar Nama Pasien ");
+        judulLabel.setBounds(98, 10, 200, 10);
         this.add(judulLabel);
-        
-        namaLabel = new JLabel ("Nama Label");
-        namaLabel.setBounds(50, 150, 50, 10);
+
+        namaLabel = new JLabel(" Nama ");
+        namaLabel.setBounds(10, 40, 50, 25);
         this.add(namaLabel);
         
-        namaText = new JTextField ("Nama Text");
-        namaText.setBounds(50, 150, 50, 10);
-        this.add(namaText);
+        alamatLabel = new JLabel(" Alamat ");;
+        alamatLabel.setBounds(10, 90, 60, 25);
+        this.add(alamatLabel);
         
-        saveButton = new JButton ("Save Button");
-        saveButton.setBounds(50, 150, 50, 10);
+        noRekamMedisLabel = new JLabel(" Nomor Rekam Medis   ");
+        noRekamMedisLabel.setBounds(10, 70, 300, 25);
+        this.add(noRekamMedisLabel);
+
+        noRekamMedisText = new JTextField();
+        noRekamMedisText.setBounds(150, 70, 200, 25);
+        this.add(noRekamMedisText);
+
+        alamatText = new JTextField();
+        alamatText.setBounds(150, 70, 200, 25);
+        this.add(alamatText);
+
+        namaText = new JTextField();
+        namaText.setBounds(150, 70, 200, 25);
+        this.add(namaText);
+
+        saveButton = new JButton(" SAVE ");
+        saveButton.setBounds(150, 150, 90, 30);
         this.add(saveButton);
     }
-    
+
 }
