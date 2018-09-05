@@ -19,7 +19,10 @@ public class AntrianPasien {
     private Klinik klinik; //membuat attributte klinik menggunakan tipe class klinik
     private Pasien daftarPasien[]; // attributte daftarPasien[] menggunakan kelas Pasien
 // buat method getTanggalAntrian
-
+/**
+ * fungsi membaca tanggal lahir
+ * @return 
+ */
     public int getTanggalAntrian() {
         return tanggalAntrian;
     }

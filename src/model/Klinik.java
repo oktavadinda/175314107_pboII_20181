@@ -5,14 +5,19 @@
  */
 package model;
 
+import java.util.ArrayList;
+
 /**
  *
  * @author asus
  */
 // buat class Klinik dengan attributte idKlinik dan nama yang bertipe integer;
-class Klinik {
+public class Klinik {
     private String idKlinik;
     private String nama;
+    
+    private ArrayList<Pasien> daftarPasien = new ArrayList<Pasien>();
+    
 //method getIdKlinik bertipe String 
     public String getIdKlinik() {
         return idKlinik;
