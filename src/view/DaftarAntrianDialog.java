@@ -26,6 +26,9 @@ public class DaftarAntrianDialog extends JDialog {
     private JTextField namaText;
     private JButton saveButton;
 
+    public DaftarAntrianDialog(){
+        init();
+    }
     public void init() {
 
         this.setLayout(null);
@@ -50,11 +53,11 @@ public class DaftarAntrianDialog extends JDialog {
         this.add(noRekamMedisText);
 
         alamatText = new JTextField();
-        alamatText.setBounds(150, 70, 200, 25);
+        alamatText.setBounds(80, 90, 60, 25);
         this.add(alamatText);
 
         namaText = new JTextField();
-        namaText.setBounds(150, 70, 200, 25);
+        namaText.setBounds(70, 40, 100, 25);
         this.add(namaText);
 
         saveButton = new JButton(" SAVE ");
