@@ -40,39 +40,43 @@ public class DaftarAntrianDialog extends JDialog {
      * fungsi membaca init 
      */
     public void init() {
-
+/**
+ * merupakan fungsi untuk mengatur posisi label, textfield, dan button
+ * dengan perintah setBounds() karena layout yang digunakan adalah null layout.
+ */
         this.setLayout(null);
-        judulLabel = new JLabel(" Daftar Nama Pasien ");
-        judulLabel.setBounds(98, 10, 200, 10);
+        judulLabel = new JLabel(" Daftar Nama Pasien "); //membuat objek dengan JLabel judul yang bernama "Daftar Nama Pasien"
+        judulLabel.setBounds(98, 10, 200, 10); //ukuran untuk judul label
         this.add(judulLabel);
 
-        namaLabel = new JLabel(" Nama ");
-        namaLabel.setBounds(10, 40, 50, 25);
+        namaLabel = new JLabel(" Nama "); //membuat objek dengan JLabel text "nama"
+        namaLabel.setBounds(10, 40, 50, 25); //ukuran untuk nama label
         this.add(namaLabel);
         
-        alamatLabel = new JLabel(" Alamat ");;
-        alamatLabel.setBounds(10, 90, 60, 25);
+        alamatLabel = new JLabel(" Alamat "); //membuat objek dengan JLabel text "alamat" 
+        alamatLabel.setBounds(10, 90, 60, 25); //ukuran untuk alamat label
         this.add(alamatLabel);
         
-        noRekamMedisLabel = new JLabel(" Nomor Rekam Medis   ");
-        noRekamMedisLabel.setBounds(10, 70, 300, 25);
+        noRekamMedisLabel = new JLabel(" Nomor Rekam Medis   "); //membuat objek dengan JLabel text "nomor rekam medis"
+        noRekamMedisLabel.setBounds(10, 70, 300, 25); //ukuran untuk no rekam medis label
         this.add(noRekamMedisLabel);
 
-        noRekamMedisText = new JTextField();
-        noRekamMedisText.setBounds(150, 70, 200, 25);
+        noRekamMedisText = new JTextField(); //membuat objek noRekamMedisText dengan JTextField
+        noRekamMedisText.setBounds(150, 70, 200, 25); //ukuran untuk no rekam medis text
         this.add(noRekamMedisText);
 
-        alamatText = new JTextField();
-        alamatText.setBounds(80, 90, 60, 25);
+        alamatText = new JTextField(); //membuat objek alamatText dengan JTextField 
+        alamatText.setBounds(80, 90, 60, 25); //ukuran untuk alamat text
         this.add(alamatText);
 
-        namaText = new JTextField();
-        namaText.setBounds(70, 40, 100, 25);
+        namaText = new JTextField(); //membuat objek namaText dengan JTextField
+        namaText.setBounds(70, 40, 100, 25); //ukuran untuk nama text
         this.add(namaText);
 
-        saveButton = new JButton(" SAVE ");
-        saveButton.setBounds(150, 150, 90, 30);
+        saveButton = new JButton(" SAVE "); //membuat objek saveButton dengan JButton
+        saveButton.setBounds(150, 150, 90, 30); //ukuran untuk save button
         this.add(saveButton);
+        
     }
 
 }
