@@ -47,9 +47,13 @@ package model;
     public int getBulanAntrian() {// buat getBulanAntrian bertipe integer
         return bulanAntrian; 
     }
-//buat method setBulanAntrian menggunakan throws Exception
+/**
+ * membaca setBulanAntrian yang berfungsi sebagai tempat menginput bulan antrian dengan ketentuan bulan antrian mulai dari 1-12
+ * @param bulanAntrian
+ * @throws Exception 
+ */
 
-    public void setBulanAntrian(int bulanAntrian) throws Exception {
+    public void setBulanAntrian(int bulanAntrian) throws Exception {//buat method setBulanAntrian menggunakan throws Exception
         if (bulanAntrian > 0 && bulanAntrian < 13) { //buat looping menggunakan if dengan parameter bulan antrian dari 1-12
             this.bulanAntrian = bulanAntrian;
         } else {  // else berfungsi jika if tidak dijalankan maka masuk ke dalam else 
@@ -57,14 +61,21 @@ package model;
         }
 
     }
-// buat getBulanAntrian bertipe integer
+/**
+ * berfungsi membaca getTahunAntrian untuk menampilkan tahun antrian  pada output
+ * @return 
+ */
 
-    public int getTahunAntrian() {
+    public int getTahunAntrian() {// buat getBulanAntrian bertipe integer
         return tahunAntrian;
     }
-//buat method setTahunAntrian menggunakan throws Exception
+/**
+ * membaca setTahunAntrian yang berfungsi sebagai tempat menginput TahunAntrian dengan ketntuan tahun antrian lebih dari 0
+ * @param tahunAntrian
+ * @throws Exception 
+ */
 
-    public void setTahunAntrian(int tahunAntrian) throws Exception {
+    public void setTahunAntrian(int tahunAntrian) throws Exception {//buat method setTahunAntrian menggunakan throws Exception
         if (tahunAntrian > 0) { //buat looping menggunakan if dengan parameter tahun antrian lebih dari 0
             this.tahunAntrian = tahunAntrian;
         } else { //else berfungsi jika if tidak dijalankan maka masuk ke dalam else 
@@ -72,24 +83,36 @@ package model;
         }
 
     }
-//buat getKlinik bertipe class Klinik
+/**
+ * berfungsi membaca getKlinik untuk menampilkan klinik  pada output
+ * @return 
+ */
 
-    public Klinik getKlinik() {
+    public Klinik getKlinik() {//buat getKlinik bertipe class Klinik
         return klinik;
     }
-//buat setKlinik dengan parameter Klinik klinik
+/**
+ * membaca setKlinik yang berfungsi sebagai tempat menginput klinik
+ * @param klinik 
+ */
 
-    public void setKlinik(Klinik klinik) {
+    public void setKlinik(Klinik klinik) {//buat setKlinik dengan parameter Klinik klinik
         this.klinik = klinik;
     }
-//buat getDaftarPasien bertipe Pasien[]
+/**
+ * berfungsi membaca getDaftarPasien untuk menampilkan daftar pasien  pada output
+ * @return 
+ */
 
-    public Pasien[] getDaftarPasien() {
+    public Pasien[] getDaftarPasien() {//buat getDaftarPasien bertipe Pasien[]
         return daftarPasien;
     }
-//buat setDaftarPasien dengan parameter daftarPasien bertipe Pasien[]
+/**
+ * membaca setDaftarPasien yang berfungsi sebagai tempat menginput daftar pasien
+ * @param daftarPasien 
+ */
 
-    public void setDaftarPasien(Pasien[] daftarPasien) {
+    public void setDaftarPasien(Pasien[] daftarPasien) {//buat setDaftarPasien dengan parameter daftarPasien bertipe Pasien[]
         this.daftarPasien = daftarPasien;
     }
 

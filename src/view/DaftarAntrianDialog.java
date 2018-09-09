@@ -15,20 +15,30 @@ import javax.swing.JTextField;
  * @author admin
  */
 public class DaftarAntrianDialog extends JDialog {
+/**
+ * class DaftarAntrianDialog yang memiliki attribute judulLabel,namaLabel,alamatLabelnoRekamMedisLabel
+ * noRekamMedisText,alamatText, judulText, namaText, dan saveButton
+ */
+    private JLabel judulLabel; //attributte judulLabel bertipe JLabel dengan import JLabel
+    private JLabel namaLabel;  //attributte namaLabel bertipe JLabel dengan import JLabel
+    private JLabel alamatLabel; //attributte alamatLabel bertipe JLabel dengan import JLabel
+    private JLabel noRekamMedisLabel; //attributte noRekamMedisLabel bertipe JLabel dengan import JLabel
+    private JTextField noRekamMedisText; //attributte noRekamMedisText bertipe JTextField dengan import JTextField
+    private JTextField alamatText; //attributte alamatText bertipe JTextField dengan import JTextField
+    private JTextField judulText;  //attributte judulText bertipe JTextField dengan import JTextField
+    private JTextField namaText;  //attributte namaText bertipe JTextField dengan import JTextField
+    private JButton saveButton;  //attributte saveButton bertipe JButton dengan import JButton
 
-    private JLabel judulLabel;
-    private JLabel namaLabel;
-    private JLabel alamatLabel;
-    private JLabel noRekamMedisLabel;
-    private JTextField noRekamMedisText;
-    private JTextField alamatText;
-    private JTextField judulText;
-    private JTextField namaText;
-    private JButton saveButton;
-
+    /**
+     * fungsi membaca DaftarAntrianDialog
+     * fungsi init digunakan untuk inisialisasi atau membuat stack baru yang masih kosong.
+     */
     public DaftarAntrianDialog(){
         init();
     }
+    /**
+     * fungsi membaca init 
+     */
     public void init() {
 
         this.setLayout(null);

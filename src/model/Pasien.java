@@ -12,8 +12,9 @@ package model;
 // buat class  pasien 
 //buat attributte no rekam medis, nama, alamat,tempat lahir bertipe String dan tanggal lahir, bulan lahir, tahun lahir bertipe integer
 public class Pasien extends AntrianPasien {
-//buat attributte no rekam medis, nama, alamat,tempat lahir bertipe String dan tanggal lahir, bulan lahir, tahun lahir bertipe integer
-
+/**
+ * buat attributte no rekam medis, nama, alamat,tempat lahir bertipe String dan tanggal lahir, bulan lahir, tahun lahir bertipe integer
+ */
     private int noRekamMedis;
     private String nama;
     private String alamat;
@@ -21,24 +22,37 @@ public class Pasien extends AntrianPasien {
     private int tanggalLahir;
     private int bulanLahir;
     private int tahunLahir;
+    /**
+     * buat method kosong, yang berfungsi membaca class pasien
+     */
 //method pasien kosong
 
     public Pasien() {
 
     }
-// method pasien dengan parameter nama
+    /**
+     * berfungsi memanggil pasien dengan parameter nama
+     * @param nama 
+     */
 
-    public Pasien(String nama) {
+    public Pasien(String nama) {// method pasien dengan parameter nama
         this.nama = nama;
     }
-// buat getNoRekanMedis bertipe String
+    /**
+     * membaca getNoRekamMedis untuk mengembalikan nilai noRekamMedis 
+     * @return noRekamMedis
+     */
 
-    public int getNoRekamMedis() {
+    public int getNoRekamMedis() {// buat getNoRekanMedis bertipe String
         return noRekamMedis;
     }
-//buat method setNoRekamMedis menggunakan throws Exception
+    /**
+     * membaca method setNoRekamMedis untuk memasukkan no rekam medis 
+     * @param noRekamMedis
+     * @throws Exception 
+     */
 
-    public void setNoRekamMedis(int noRekamMedis) throws Exception {
+    public void setNoRekamMedis(int noRekamMedis) throws Exception {//buat method setNoRekamMedis menggunakan throws Exception
         //buat looping menggunakan if dengan parameter no rekam medis  dari 6-20
         if (noRekamMedis >= 6 && noRekamMedis <= 20) {
             this.noRekamMedis = noRekamMedis;
@@ -47,44 +61,69 @@ public class Pasien extends AntrianPasien {
         }
 
     }
-// buat method getNama() bertipe String
+    /**
+     * berfungsi memanggil getNama
+     * @return 
+     */
 
-    public String getNama() {
+    public String getNama() {// buat method getNama() bertipe String
         return nama;
     }
-//buat method setnama dengan parameter nama bertipe String
+    /**
+     * membaca setNama yang berfungsi sebagai tempat menginput nama
+     * @param nama 
+     */
 
-    public void setNama(String nama) {
+    public void setNama(String nama) {//buat method setnama dengan parameter nama bertipe String
         this.nama = nama;
     }
-// buat method getAlamat() bertipe String
+    /**
+     * berfungsi membaca getAlamat untuk menampilkan alamat pada output
+     * @return 
+     */
 
-    public String getAlamat() {
+    public String getAlamat() {// buat method getAlamat() bertipe String
         return alamat;
     }
-//buat method setAlamat dengan parameter alamat bertipe String
+/**
+ *  membaca setAlamat yang berfungsi sebagai tempat menginput alamat
+ * @param alamat 
+ */
 
-    public void setAlamat(String alamat) {
+    public void setAlamat(String alamat) {//buat method setAlamat dengan parameter alamat bertipe String
         this.alamat = alamat;
     }
-// buat method getTempatTanggalLahir() bertipe String
+/**
+ * berfungsi membaca getTempatLahir untuk menampilkan tempat lahir pada output
+ * @return tempatLahir
+ */
 
-    public String getTempatLahir() {
+    public String getTempatLahir() {// buat method getTempatTanggalLahir() bertipe String
         return tempatLahir;
     }
-//buat method setTempatLahir dengan parameter tempatLahir bertipe String
+/**
+ *  membaca setTempatLahir yang berfungsi sebagai tempat menginput tempatLahir
+ * @param tempatLahir 
+ */
 
-    public void setTempatLahir(String tempatLahir) {
+    public void setTempatLahir(String tempatLahir) {//buat method setTempatLahir dengan parameter tempatLahir bertipe String
         this.tempatLahir = tempatLahir;
     }
-// buat method getTanggalLahir() bertipe integer
+/**
+ * berfungsi membaca getTanggalLahir untuk menampilkan tanggal lahir pada output
+ * @return 
+ */
 
-    public int getTanggalLahir() {
+    public int getTanggalLahir() {// buat method getTanggalLahir() bertipe integer
         return tanggalLahir;
     }
-//buat method setTanggalLahir menggunakan throws Exception
+/**
+ *  membaca setTanggalLahir yang berfungsi sebagai tempat menginput tanggal lahir yang telah diberikan ketentuan yaitu mulai dari 1-31
+ * @param tanggalLahir
+ * @throws Exception 
+ */
 
-    public void setTanggalLahir(int tanggalLahir) throws Exception {
+    public void setTanggalLahir(int tanggalLahir) throws Exception {//buat method setTanggalLahir menggunakan throws Exception
         if (tanggalLahir > 0 && tanggalLahir < 32) { //buat looping menggunakan if dengan parameter tanggal lahir dari 1-31
             this.tanggalLahir = tanggalLahir;
         } else { // else berfungsi jika if tidak dijalankan maka masuk ke dalam else
@@ -92,14 +131,21 @@ public class Pasien extends AntrianPasien {
         }
 
     }
-// buat method getBulanLahir() bertipe integer
+/**
+ * berfungsi membaca getBulanLahir untuk menampilkan bulan lahir pada output
+ * @return 
+ */
 
-    public int getBulanLahir() {
+    public int getBulanLahir() {// buat method getBulanLahir() bertipe integer
         return bulanLahir;
     }
-//buat method setBulanlLahir menggunakan throws Exception
+/**
+ *  membaca setBulan Lahir yang berfungsi sebagai tempat menginput lahir, yang telah diberikan ketentuan yaitu mulai dari 1-12
+ * @param bulanLahir
+ * @throws Exception 
+ */
 
-    public void setBulanLahir(int bulanLahir) throws Exception {
+    public void setBulanLahir(int bulanLahir) throws Exception {//buat method setBulanlLahir menggunakan throws Exception
         if (bulanLahir > 0 && bulanLahir < 13) { //buat looping menggunakan if dengan parameter bulan lahir dari 1-12
             this.bulanLahir = bulanLahir;
         } else { // else berfungsi jika if tidak dijalankan maka masuk ke dalam else
@@ -107,14 +153,21 @@ public class Pasien extends AntrianPasien {
         }
 
     }
-// buat method getTahunLahir() bertipe integer
+/**
+ * berfungsi membaca getTahunLahir untuk menampilkan tahun lahir pada output
+ * @return 
+ */
 
-    public int getTahunLahir() {
+    public int getTahunLahir() {// buat method getTahunLahir() bertipe integer
         return tahunLahir;
     }
-//buat method setTahunLahir menggunakan throws Exception
+/**
+ *  membaca setTahunLahir yang berfungsi sebagai tempat menginput tahun lahir, yang memiliki ketentuan mulai dari 1 
+ * @param tahunLahir
+ * @throws Exception 
+ */
 
-    public void setTahunLahir(int tahunLahir) throws Exception {
+    public void setTahunLahir(int tahunLahir) throws Exception {//buat method setTahunLahir menggunakan throws Exception
         if (tahunLahir > 0) { //buat looping menggunakan if dengan parameter tahun lahir lebih dari 0
             this.tahunLahir = tahunLahir;
         } else { // else berfungsi jika if tidak dijalankan maka masuk ke dalam else

@@ -11,27 +11,46 @@ import java.util.ArrayList;
  *
  * @author asus
  */
-// buat class Klinik dengan attributte idKlinik dan nama yang bertipe integer;
+/**
+ * class klinik dengan attributte id klinik dan nama 
+ * @author asus
+ */
+// buat class Klinik dengan attributte idKlinik dan nama yang bertipe String;
 public class Klinik {
     private String idKlinik;
     private String nama;
     
+    /**
+     * arrayList berfungsi menambah data baru secara dinamis tanpa harus menentukan ukurannya di awal.
+     */
     private ArrayList<Pasien> daftarPasien = new ArrayList<Pasien>();
     
-//method getIdKlinik bertipe String 
-    public String getIdKlinik() {
+ /**
+  * berfungsi membaca getIdKlinik untuk menampilkan id klinik  pada output
+  * @return 
+  */
+    public String getIdKlinik() {//method getIdKlinik bertipe String
         return idKlinik;
     }
-//buat method setIdKlinik dengan parameter idKlinik bertipe String
-    public void setIdKlinik(String idKlinik) {
+/**
+ * membaca setIdKlinik yang berfungsi sebagai tempat menginput id klinik
+ * @param idKlinik 
+ */
+    public void setIdKlinik(String idKlinik) {//buat method setIdKlinik dengan parameter idKlinik bertipe String
         this.idKlinik = idKlinik;
     }
-// buat method getNama() bertipe String
-    public String getNama() {
+/**
+ * berfungsi membaca getNama untuk menampilkan nama pada output
+ * @return 
+ */
+    public String getNama() {// buat method getNama() bertipe String
         return nama;
     }
-// buat method setNama dengan parameter nama bertipe String
-    public void setNama(String nama) {
+/**
+ * membaca setNama yang berfungsi sebagai tempat menginput nama
+ * @param nama 
+ */
+    public void setNama(String nama) {// buat method setNama dengan parameter nama bertipe String
         this.nama = nama;
     }
     
