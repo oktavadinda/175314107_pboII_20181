@@ -66,11 +66,11 @@ public class DaftarAntrianDialog extends JDialog {
         this.add(noRekamMedisText);
 
         alamatText = new JTextField(); //membuat objek alamatText dengan JTextField 
-        alamatText.setBounds(80, 90, 60, 25); //ukuran untuk alamat text
+        alamatText.setBounds(150, 100, 200, 25); //ukuran untuk alamat text
         this.add(alamatText);
 
         namaText = new JTextField(); //membuat objek namaText dengan JTextField
-        namaText.setBounds(70, 40, 100, 25); //ukuran untuk nama text
+        namaText.setBounds(150, 40, 200, 25); //ukuran untuk nama text
         this.add(namaText);
 
         saveButton = new JButton(" SAVE "); //membuat objek saveButton dengan JButton

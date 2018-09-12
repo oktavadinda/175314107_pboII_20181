@@ -5,6 +5,8 @@
  */
 package model;
 
+import java.util.ArrayList;
+
 /**
  * buat class antrian pasien buat attributte tanggaAntrian, bulanAntrian,
  * tahunAntrian bertipe integer
@@ -16,8 +18,9 @@ package model;
     private int bulanAntrian; // attributte bulan antrian bertipe integer
     private int tahunAntrian; // attributte tahun antrian bertipe integer
     private Klinik klinik; // attributte klinik menggunakan tipe class klinik
-    private Pasien daftarPasien[]; // attributte daftarPasien[] menggunakan kelas Pasien
-// buat method getTanggalAntrian
+    
+    private static ArrayList<Pasien> daftarPasienAntri =
+            new ArrayList<Pasien>();
 
     /**
      * fungsi membaca tanggal lahir
@@ -104,16 +107,20 @@ package model;
  * @return 
  */
 
-    public Pasien[] getDaftarPasien() {//buat getDaftarPasien bertipe Pasien[]
-        return daftarPasien;
+    public ArrayList<Pasien> getDaftarPasien() {//buat getDaftarPasien bertipe Pasien[]
+        return daftarPasienAntri;
     }
 /**
  * membaca setDaftarPasien yang berfungsi sebagai tempat menginput daftar pasien
  * @param daftarPasien 
  */
 
-    public void setDaftarPasien(Pasien[] daftarPasien) {//buat setDaftarPasien dengan parameter daftarPasien bertipe Pasien[]
-        this.daftarPasien = daftarPasien;
+//    public void setDaftarPasien(Pasien[] daftarPasien) {//buat setDaftarPasien dengan parameter daftarPasien bertipe Pasien[]
+//        this.daftarPasienAntri = daftarPasien;
+//    }
+    
+    public void mendaftar(Pasien pasien){
+        daftarPasienAntri.add(bulanAntrian, pasien);
     }
 
 }
