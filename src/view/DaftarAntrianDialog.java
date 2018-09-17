@@ -5,78 +5,153 @@
  */
 package view;
 
+import java.awt.Color;
+import java.awt.Font;
+import java.awt.event.ActionEvent;
+import java.awt.event.ActionListener;
+import javax.swing.BorderFactory;
 import javax.swing.JButton;
+import javax.swing.JComboBox;
 import javax.swing.JDialog;
 import javax.swing.JLabel;
+import javax.swing.JRadioButton;
 import javax.swing.JTextField;
+import model.Pasien;
 
 /**
  *
  * @author admin
  */
-public class DaftarAntrianDialog extends JDialog {
-/**
- * class DaftarAntrianDialog yang memiliki attribute judulLabel,namaLabel,alamatLabelnoRekamMedisLabel
- * noRekamMedisText,alamatText, judulText, namaText, dan saveButton
- */
-    private JLabel judulLabel; //attributte judulLabel bertipe JLabel dengan import JLabel
-    private JLabel namaLabel;  //attributte namaLabel bertipe JLabel dengan import JLabel
-    private JLabel alamatLabel; //attributte alamatLabel bertipe JLabel dengan import JLabel
-    private JLabel noRekamMedisLabel; //attributte noRekamMedisLabel bertipe JLabel dengan import JLabel
-    private JTextField noRekamMedisText; //attributte noRekamMedisText bertipe JTextField dengan import JTextField
-    private JTextField alamatText; //attributte alamatText bertipe JTextField dengan import JTextField
-    private JTextField judulText;  //attributte judulText bertipe JTextField dengan import JTextField
-    private JTextField namaText;  //attributte namaText bertipe JTextField dengan import JTextField
-    private JButton saveButton;  //attributte saveButton bertipe JButton dengan import JButton
-
-    /**
-     * fungsi membaca DaftarAntrianDialog
-     * fungsi init digunakan untuk inisialisasi atau membuat stack baru yang masih kosong.
-     */
-    public DaftarAntrianDialog(){
+public class DaftarAntrianDialog extends JDialog implements ActionListener {
+    
+    private JLabel judulLabel;
+    private JLabel noRekamMedis;
+    private JLabel namaLabel;
+    private JLabel ttlAntri;
+    private JLabel blnAntri;
+    private JLabel thnAntri;
+    private JLabel alamatLabel;
+    private JTextField namaText;
+    private JComboBox ttlAntriBox;
+    private JComboBox blnAntriBox;
+    private JComboBox thnAntriBox;
+    private JTextField alamatText;
+    private JTextField noRekamMedisText;
+    private JRadioButton tambahButton;
+    private JButton simpanButton;
+    
+    public DaftarAntrianDialog() {
         init();
     }
-    /**
-     * fungsi membaca init 
-     */
-    public void init() {
-/**
- * merupakan fungsi untuk mengatur posisi label, textfield, dan button
- * dengan perintah setBounds() karena layout yang digunakan adalah null layout.
- */
-        this.setLayout(null);
-        judulLabel = new JLabel(" Daftar Nama Pasien "); //membuat objek dengan JLabel judul yang bernama "Daftar Nama Pasien"
-        judulLabel.setBounds(98, 10, 200, 10); //ukuran untuk judul label
-        this.add(judulLabel);
 
-        namaLabel = new JLabel(" Nama "); //membuat objek dengan JLabel text "nama"
-        namaLabel.setBounds(10, 40, 50, 25); //ukuran untuk nama label
+    public DaftarAntrianDialog(String title) {
+        this.setTitle(title);
+        init();
+    }    
+
+    public void init() {
+        
+        this.setLayout(null);
+        judulLabel = new JLabel(" Daftar Antrian Pasien "); //membuat objek dengan JLabel judul yang bernama "Daftar Nama Pasien"
+        judulLabel.setBounds(185, 10, 200, 50); //ukuran untuk judul label
+        judulLabel.setFont(new Font(null, Font.PLAIN, 20));
+        this.add(judulLabel);
+        
+        this.setLayout(null);
+        noRekamMedis = new JLabel("No RM");
+        noRekamMedis.setBounds(10, 55, 70, 60);
+        noRekamMedis.setFont(new Font(null, Font.PLAIN, 14));
+        this.add(noRekamMedis);
+        
+        this.setLayout(null);
+        
+        noRekamMedisText = new JTextField();
+        noRekamMedisText.setBounds(100, 70, 130, 30);
+        noRekamMedisText.setFont(new Font(null, Font.PLAIN, 14));
+        this.add(noRekamMedisText);
+        
+        this.setLayout(null);
+        namaLabel = new JLabel("Nama");
+        namaLabel.setBounds(280, 55, 70, 60);
+        namaLabel.setFont(new Font(null, Font.PLAIN, 14));
         this.add(namaLabel);
         
-        alamatLabel = new JLabel(" Alamat "); //membuat objek dengan JLabel text "alamat" 
-        alamatLabel.setBounds(10, 90, 60, 25); //ukuran untuk alamat label
+        namaText = new JTextField();
+        namaText.setBounds(350, 70, 190, 30);
+        namaText.setFont(new Font(null, Font.PLAIN, 14));
+        this.add(namaText);
+        
+        alamatLabel = new JLabel("Alamat");
+        alamatLabel.setBounds(280, 95, 70, 60);
+        alamatLabel.setFont(new Font(null, Font.PLAIN, 14));
         this.add(alamatLabel);
         
-        noRekamMedisLabel = new JLabel(" Nomor Rekam Medis   "); //membuat objek dengan JLabel text "nomor rekam medis"
-        noRekamMedisLabel.setBounds(10, 70, 300, 25); //ukuran untuk no rekam medis label
-        this.add(noRekamMedisLabel);
-
-        noRekamMedisText = new JTextField(); //membuat objek noRekamMedisText dengan JTextField
-        noRekamMedisText.setBounds(150, 70, 200, 25); //ukuran untuk no rekam medis text
-        this.add(noRekamMedisText);
-
-        alamatText = new JTextField(); //membuat objek alamatText dengan JTextField 
-        alamatText.setBounds(150, 100, 200, 25); //ukuran untuk alamat text
+        alamatText = new JTextField();
+        alamatText.setBounds(350, 110, 190, 30);
+        alamatText.setFont(new Font(null, Font.PLAIN, 14));
         this.add(alamatText);
+        
+        ttlAntri = new JLabel("Tgl Antri");
+        ttlAntri.setBounds(10, 95, 200, 60);
+        ttlAntri.setFont(new Font(null, Font.PLAIN, 14));
+        this.add(ttlAntri);
+        JComboBox tglAntri = new JComboBox();
+        for (int i = 1; i < 32; i++) {
+            tglAntri.addItem(i);
+        }
+        tglAntri.setBounds(100, 110, 50, 30);
+        this.add(tglAntri);
+        
+        blnAntri = new JLabel("Bulan");
+        blnAntri.setBounds(10, 135, 50, 60);
+        blnAntri.setFont(new Font(null, Font.PLAIN, 14));
+        this.add(blnAntri);
+        JComboBox blnAntri = new JComboBox();
+        blnAntri.addItem("JAN");
+        blnAntri.addItem("FEB");
+        blnAntri.addItem("MAR");
+        blnAntri.addItem("APR");
+        blnAntri.addItem("MAY");
+        blnAntri.addItem("JUN");
+        blnAntri.addItem("JUL");
+        blnAntri.addItem("AUG");
+        blnAntri.addItem("SEP");
+        blnAntri.addItem("OCT");
+        blnAntri.addItem("NOV");
+        blnAntri.addItem("DEC");
+        blnAntri.setBounds(100, 150, 50, 30);
+        this.add(blnAntri);
+        
+        thnAntri = new JLabel("Tahun");
+        thnAntri.setBounds(10, 175, 50, 60);
+        thnAntri.setFont(new Font(null, Font.PLAIN, 14));
+        this.add(thnAntri);        
+        JComboBox thnAntri = new JComboBox();
+        for (int i = 1950; i <= 2018; i++) {
+            thnAntri.addItem(i);
+        }
+        thnAntri.setBounds(100, 190, 70, 30);
+        this.add(thnAntri);
 
-        namaText = new JTextField(); //membuat objek namaText dengan JTextField
-        namaText.setBounds(150, 40, 200, 25); //ukuran untuk nama text
-        this.add(namaText);
-
-        saveButton = new JButton(" SAVE "); //membuat objek saveButton dengan JButton
-        saveButton.setBounds(150, 150, 90, 30); //ukuran untuk save button
-        this.add(saveButton);
+        // ttlText.setBorder(BorderFactory.createLineBorder(Color.pink));
+        this.setLayout(null);
+        simpanButton = new JButton("SAVE");
+        simpanButton.setBounds(250, 250, 100, 30);
+        simpanButton.setFont(new Font(null, Font.BOLD, 15));
+        this.add(simpanButton);
         
     }
-
+    
+    @Override
+    public void actionPerformed(ActionEvent ae) {
+        if (ae.getSource() == tambahButton) {
+            Pasien baru = new Pasien();
+            baru.setNama(namaText.getText());
+            baru.setAlamat(alamatText.getText());
+            
+            Pasien.tambahPasienBaru(baru);
+        }
+        
+    }
+    
 }

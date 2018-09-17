@@ -15,6 +15,7 @@ import java.util.ArrayList;
 //buat attributte no rekam medis, nama, alamat,tempat lahir bertipe String dan tanggal lahir, bulan lahir, tahun lahir bertipe integer
 public class Pasien {
 
+    
     /**
      * buat attributte no rekam medis, nama, alamat,tempat lahir bertipe String
      * dan tanggal lahir, bulan lahir, tahun lahir bertipe integer
