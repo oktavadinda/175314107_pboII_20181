@@ -21,6 +21,8 @@ import java.util.ArrayList;
     
     private static ArrayList<Pasien> daftarPasienAntri =
             new ArrayList<Pasien>();
+    private static ArrayList<AntrianPasien> daftarAntrian = 
+            new ArrayList<AntrianPasien>();
 
     /**
      * fungsi membaca tanggal lahir
@@ -119,8 +121,17 @@ import java.util.ArrayList;
 //        this.daftarPasienAntri = daftarPasien;
 //    }
     
-    public void mendaftar(Pasien pasien){
+    public  void mendaftar(Pasien pasien, int tanggal, int bulan, int tahun){
         daftarPasienAntri.add(bulanAntrian, pasien);
     }
-
+    public static AntrianPasien cariPasien(String NoRM){
+       AntrianPasien.cariPasien(NoRM);
+       return cariPasien(NoRM);
+    }
+    public static Pasien cariPasien(String noRM,int tanggal, int bulan, int tahun){
+        return cariPasien(noRM, tanggal, bulan, tahun);
+    }
+    public static void buatAntrian(int tanggal, int bulan, int tahun, Klinik klinik){
+        
+    }
 }
