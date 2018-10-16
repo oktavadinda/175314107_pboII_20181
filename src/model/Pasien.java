@@ -5,7 +5,9 @@
  */
 package model;
 
+import java.text.SimpleDateFormat;
 import java.util.ArrayList;
+import java.util.Date;
 
 /**
  *
@@ -15,7 +17,6 @@ import java.util.ArrayList;
 //buat attributte no rekam medis, nama, alamat,tempat lahir bertipe String dan tanggal lahir, bulan lahir, tahun lahir bertipe integer
 public class Pasien {
 
-    
     /**
      * buat attributte no rekam medis, nama, alamat,tempat lahir bertipe String
      * dan tanggal lahir, bulan lahir, tahun lahir bertipe integer
@@ -55,6 +56,14 @@ public class Pasien {
         this.nik = nik;
     }
 
+    public Pasien(String nama, int tanggalLahir, int bulanLahir, int tahunLahir, String noRM) {
+        this.nama = nama;
+        this.tanggalLahir = tanggalLahir;
+        this.bulanLahir = bulanLahir;
+        this.tahunLahir = tahunLahir;
+    }
+    
+
     /**
      * membaca getNoRekamMedis untuk mengembalikan nilai noRekamMedis
      *
@@ -70,12 +79,12 @@ public class Pasien {
      * @param noRekamMedis
      * @throws Exception
      */
-    public void setNoRekamMedis(String noRekamMedis) throws NumberFormatException {//buat method setNoRekamMedis menggunakan throws Exception
+    public void setNoRekamMedis(String noRekamMedis) throws Exception {//buat method setNoRekamMedis menggunakan throws Exception
         //buat looping menggunakan if dengan parameter no rekam medis  dari 6-20
-        if (noRekamMedis.toCharArray().length >= 6) {
+        if (noRekamMedis.length() == 16) {
             this.noRekamMedis = noRekamMedis;
         } else {
-            throw new NumberFormatException("Nomor Rekam Medis Salah");
+            throw new Exception("Nomor Rekam Medis anda Salah");
         }
 
     }
@@ -216,21 +225,33 @@ public class Pasien {
         return nik;
     }
 
-    public void setNik(String nik) throws NumberFormatException {
-        if (nik.toCharArray().length >= 6) {
-            this.nik = nik;
+    public void setNik(String nik) throws Exception {
+        if (nik.length() == 16) {
+            String Nik = nik;
+            this.setNoRekamMedis(nik);
+            this.nik=nik;
         } else {
-            throw new NumberFormatException("NIK Salah");
+            throw new Exception("NIK anda salah");
         }
     }
 
+    public void getTanggalKelahiran(){
+        Date tanggalKelahiran= new Date(getTahunLahir()-1945, getBulanLahir()-1, getTanggalLahir());
+        SimpleDateFormat ft = new SimpleDateFormat("dd - MM - yyyy");
+        System.out.println(ft.format(tanggalKelahiran));
+    }
+    
+    public static ArrayList<Pasien> daftarPasienKlinik(){
+        return daftarPasienKlinik;
+    }
+    
     public static void tambahPasienBaru(Pasien pasien) {
         daftarPasienKlinik.add(pasien);
     }
 
-    public static Pasien cariPasien(String string) {
+    public static Pasien cariPasien(String noRM) {
         for (int i = 0; i < daftarPasienKlinik.size(); i++) {
-            if (daftarPasienKlinik.get(i).noRekamMedis == string) {
+            if (daftarPasienKlinik.get(i).getNik().equals(noRM)) {
                 return daftarPasienKlinik.get(i);
             }
         }
