@@ -14,8 +14,11 @@ import javax.swing.JButton;
 import javax.swing.JComboBox;
 import javax.swing.JDialog;
 import javax.swing.JLabel;
+import javax.swing.JOptionPane;
 import javax.swing.JRadioButton;
 import javax.swing.JTextField;
+import model.AntrianPasien;
+import model.Klinik;
 import model.Pasien;
 
 /**
@@ -37,6 +40,10 @@ public class DaftarAntrianDialog extends JDialog implements ActionListener {
     private JComboBox thnAntriBox;
     private JTextField alamatText;
     private JTextField noRekamMedisText;
+    private JTextField tanggalText;
+    private JTextField bulanText;
+    private JTextField tahunText;
+    private JTextField klinikText;
     private JRadioButton tambahButton;
     private JButton simpanButton;
     
@@ -69,6 +76,33 @@ public class DaftarAntrianDialog extends JDialog implements ActionListener {
         noRekamMedisText.setBounds(100, 70, 130, 30);
         noRekamMedisText.setFont(new Font(null, Font.PLAIN, 14));
         this.add(noRekamMedisText);
+        
+        noRekamMedisText.addActionListener(new ActionListener() {
+            @Override
+            public void actionPerformed(ActionEvent e) {
+                Pasien test = Pasien.cariPasien(noRekamMedisText.getText());
+                if (test == null) {
+                    JOptionPane.showMessageDialog(null, "Data Pasien " + noRekamMedisText.getText() + " Pasien Tidak Terdaftar");
+                } else {
+                    try {
+                        Klinik klinik = new Klinik();
+                        namaText.setText(test.getNama());
+                        alamatText.setText(test.getAlamat());
+                        String tanggal = String.valueOf(test.getTanggalLahir());
+                        String bulan = String.valueOf(test.getBulanLahir());
+                        String tahun = String.valueOf(test.getTahunLahir());
+                        //String namaKlinik = String.valueOf(klinik.getNama());
+                        tanggalText.setText(tanggal);
+                        bulanText.setText(bulan);
+                        tahunText.setText(tahun);
+                        klinikText.setText(klinik.getNama());
+                         
+                    } catch (Exception ex) {
+                        JOptionPane.showMessageDialog(null, ex);
+                    }
+                }
+            }
+        });
         
         this.setLayout(null);
         namaLabel = new JLabel("Nama");
@@ -145,11 +179,30 @@ public class DaftarAntrianDialog extends JDialog implements ActionListener {
     @Override
     public void actionPerformed(ActionEvent ae) {
         if (ae.getSource() == tambahButton) {
-            Pasien baru = new Pasien();
-            baru.setNama(namaText.getText());
-            baru.setAlamat(alamatText.getText());
-            
-            Pasien.tambahPasienBaru(baru);
+            Pasien test = Pasien.cariPasien(noRekamMedisText.getText());
+            for (int i = 0; i < Pasien.daftarPasienKlinik.size(); i++) {
+                if (test == Pasien.daftarPasienKlinik.get(i)) {
+                    try {
+                        Pasien pasien = new Pasien();
+                        Klinik klinik = new Klinik();
+                        AntrianPasien antrian = new AntrianPasien();
+                        pasien.setNama(namaText.getText());
+                        pasien.setAlamat(alamatText.getText());
+                        pasien.setNoRekamMedis(noRekamMedisText.getText());
+                        int tanggal = Integer.parseInt(tanggalText.getText());
+                        int bulan = Integer.parseInt(bulanText.getText());
+                        int tahun = Integer.parseInt(tahunText.getText());
+                        pasien.setTanggalLahir(tanggal);
+                        pasien.setBulanLahir(bulan);
+                        pasien.setTahunLahir(tahun);
+                        klinik.setNama(klinikText.getText());
+                        antrian.mendaftar(pasien);
+                        JOptionPane.showMessageDialog(null, "No Antrian Anda : "+(i+1));
+                    } catch (Exception e) {
+                        JOptionPane.showMessageDialog(null, e);
+                    }
+                }
+            }
         }
         
     }
