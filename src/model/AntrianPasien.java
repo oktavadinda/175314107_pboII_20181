@@ -145,10 +145,6 @@ public class AntrianPasien {
         daftarPasienAntri.add(pasien);
     }
     
-    private static int cariAntrian(int tanggal, int bulan, int tahun, Klinik klinik) {
-        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
-    }
-    
     public static void daftarPasien(Pasien pasien, int tanggal, int bulan, int tahun, Klinik klinik) throws Exception {
         if (cariAntrian(tanggal, bulan, tahun, klinik)==-1) {
             AntrianPasien.daftarAntrian.get(cariAntrian(tanggal, bulan, tahun, klinik)).mendaftar(pasien);
@@ -165,7 +161,7 @@ public class AntrianPasien {
         return null;
     }
 
-    public static int cariAntrianP(int tanggal, int bulan, int tahun, Klinik klinik) {
+    public static int cariAntrian(int tanggal, int bulan, int tahun, Klinik klinik) {
         for (int i = 0; i < daftarAntrian.size(); i++) {
             if (daftarAntrian.get(i).getTanggalAntrian() == tanggal) {
                 if (daftarAntrian.get(i).getBulanAntrian() == bulan) {
@@ -181,7 +177,24 @@ public class AntrianPasien {
         return -1;
     }
 
-    public static void buatAntrian(int tanggal, int bulan, int tahun, Klinik klinik) {
-
+    public static void buatAntrian(int tanggal, int bulan, int tahun, Klinik klinik) throws Exception{
+        AntrianPasien antrian = new AntrianPasien();
+        antrian.setTanggalAntrian(tanggal);
+        antrian.setBulanAntrian(bulan);
+        antrian.setTahunAntrian(tahun);
+        antrian.setKlinik(klinik);
+        if (cariAntrian(tanggal, bulan, tahun, klinik)== -1) {
+            daftarAntrian.add(antrian);
+        } else {
+            throw new Exception("Data Telah Terdaftar");
+        }
+    }
+    public void print(){
+        System.out.println();
+        System.out.printf("");
+        System.out.println("DAFTAR ANTRIAN PASIEN"+"\n");
+        for (int i = 0; i < daftarPasienAntri.size(); i++) {
+            daftarPasienAntri.get(i).print();
+        } // berfungsi print data pasien setiap index
     }
 }
