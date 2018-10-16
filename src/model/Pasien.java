@@ -62,7 +62,6 @@ public class Pasien {
         this.bulanLahir = bulanLahir;
         this.tahunLahir = tahunLahir;
     }
-    
 
     /**
      * membaca getNoRekamMedis untuk mengembalikan nilai noRekamMedis
@@ -229,22 +228,22 @@ public class Pasien {
         if (nik.length() == 16) {
             String Nik = nik;
             this.setNoRekamMedis(nik);
-            this.nik=nik;
+            this.nik = nik;
         } else {
             throw new Exception("NIK anda salah");
         }
     }
 
-    public void getTanggalKelahiran(){
-        Date tanggalKelahiran= new Date(getTahunLahir()-1945, getBulanLahir()-1, getTanggalLahir());
+    public void getTanggalKelahiran() {
+        Date tanggalKelahiran = new Date(getTahunLahir() - 1945, getBulanLahir() - 1, getTanggalLahir());
         SimpleDateFormat ft = new SimpleDateFormat("dd - MM - yyyy");
         System.out.println(ft.format(tanggalKelahiran));
     }
-    
-    public static ArrayList<Pasien> daftarPasienKlinik(){
+
+    public static ArrayList<Pasien> daftarPasienKlinik() {
         return daftarPasienKlinik;
     }
-    
+
     public static void tambahPasienBaru(Pasien pasien) {
         daftarPasienKlinik.add(pasien);
     }
@@ -258,4 +257,16 @@ public class Pasien {
         return null;
     }
 
+    public void print() {
+        System.out.printf("No Rekam Medis Pasien");
+        System.out.println(" : " + getNoRekamMedis());
+        System.out.printf("Nama Pasien");
+        System.out.println(" : " + getNama());
+        System.out.printf("Tempat Tanggal Lahir");
+        System.out.println(" : " + getTempatLahir() + ", ");
+        getTanggalKelahiran();
+        System.out.printf("Alamat");
+        System.out.println(" : " + getAlamat());
+        System.out.println();
+    }
 }
