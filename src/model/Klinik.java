@@ -78,9 +78,9 @@ public class Klinik {
     }
     public void print(){
         System.out.println();
-        System.out.printf("");
+        System.out.printf("%-20s","");
         System.out.println("Klinik "+getNama().toUpperCase()+"\n");
-        System.out.printf("No ID Klinik");
+        System.out.printf("%-25s","No ID Klinik");
         System.out.print(": ");
         System.out.println(getIdKlinik());
     }    

@@ -167,15 +167,15 @@ public class Dokter {
     }
     public void print(){
         System.out.println();
-        System.out.printf(" ");
+        System.out.printf("%-20s"," ");
         System.out.println("BIODATA DOKTER"+"\n");
-        System.out.printf("Nomor Pegawai");
+        System.out.printf("%-25s","Nomor Pegawai");
         System.out.println(" : "+getNomorPegawai());
-        System.out.printf("Nama");
+        System.out.printf("%-25s","Nama");
         System.out.println(" : "+getNama());
-        System.out.printf("Alamat");
+        System.out.printf("%-25s","Alamat");
         System.out.println(" : "+getAlamat());
-        System.out.printf("Tempat Tanggal Lahir");
+        System.out.printf("%-25s","Tempat Tanggal Lahir");
         System.out.print(" : "+getTempatLahir()+", ");
         getTanggalKelahiranDokter();
     }

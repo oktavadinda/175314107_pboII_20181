@@ -6,9 +6,14 @@
 package model;
 
 import java.io.File;
+import java.io.FileNotFoundException;
+import java.io.FileOutputStream;
+import java.io.IOException;
 import java.text.SimpleDateFormat;
 import java.util.ArrayList;
 import java.util.Date;
+import java.util.logging.Level;
+import java.util.logging.Logger;
 
 /**
  *
@@ -258,22 +263,35 @@ public class Pasien {
         return null;
     }
     public static void simpanDaftarPasien(File file){
-       
+     try {
+       FileOutputStream fos = new FileOutputStream(file);
+         for (int i = 0; i < daftarPasienKlinik.size(); i++) {
+             String data = daftarPasienKlinik.get(i).toString();
+             fos.write(data.getBytes());
+         }
+         fos.close();
+     } catch (FileNotFoundException ex) {
+         Logger.getLogger(Pasien.class.getName()).log(Level.SEVERE, null,ex);
+     } catch (IOException ex) {
+         Logger.getLogger(Pasien.class.getName()).log(Level.SEVERE, null,ex);
+     }   
+    }
+    public static void bacaDaftarPasien(File file){
         
     }
-    public static void bacaDataPasien(File file){
-        
+    public String toString(){
+        return noRekamMedis+"\t"+nama+"\t"+alamat+"\n";
     }
 
     public void print() {
-        System.out.printf("No Rekam Medis Pasien");
+        System.out.printf("%-25s","No Rekam Medis Pasien");
         System.out.println(" : " + getNoRekamMedis());
-        System.out.printf("Nama Pasien");
+        System.out.printf("%-25s","Nama Pasien");
         System.out.println(" : " + getNama());
-        System.out.printf("Tempat Tanggal Lahir");
+        System.out.printf("%-25s","Tempat Tanggal Lahir");
         System.out.println(" : " + getTempatLahir() + ", ");
         getTanggalKelahiran();
-        System.out.printf("Alamat");
+        System.out.printf("%-25s","Alamat");
         System.out.println(" : " + getAlamat());
         System.out.println();
     }

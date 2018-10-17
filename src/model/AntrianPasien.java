@@ -191,7 +191,7 @@ public class AntrianPasien {
     }
     public void print(){
         System.out.println();
-        System.out.printf("");
+        System.out.printf("%-20s","");
         System.out.println("DAFTAR ANTRIAN PASIEN"+"\n");
         for (int i = 0; i < daftarPasienAntri.size(); i++) {
             daftarPasienAntri.get(i).print();
