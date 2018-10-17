@@ -6,18 +6,23 @@
 package view;
 
 import java.awt.Font;
+import java.awt.event.ActionEvent;
+import java.awt.event.ActionListener;
 
 import javax.swing.JButton;
 import javax.swing.JComboBox;
 import javax.swing.JDialog;
 import javax.swing.JLabel;
+import javax.swing.JOptionPane;
 import javax.swing.JTextField;
+import model.Klinik;
+import model.Pasien;
 
 /**
  *
  * @author admin
  */
-public class TambahPasienBaruDialog extends JDialog {
+public class TambahPasienBaruDialog extends JDialog implements ActionListener{
 
     /**
      * class DaftarAntrianDialog yang memiliki attribute
@@ -25,18 +30,20 @@ public class TambahPasienBaruDialog extends JDialog {
      * noRekamMedisText,alamatText, judulText, namaText, dan saveButton
      */
     private JLabel judulLabel; //attributte judulLabel bertipe JLabel dengan import JLabel
-    private JLabel noRekamMedisLabel; //attributte noRekamMedisLabel bertipe JLabel dengan import JLabel
+    private JLabel nik; //attributte noRekamMedisLabel bertipe JLabel dengan import JLabel
     private JLabel tanggalLabel;
     private JLabel bulanLabel;
     private JLabel tahunLabel;
     private JLabel nama;
     private JLabel alamat;
+    private JLabel klinik;
     private JTextField noRekamMedisText;//attributte noRekamMedisText bertipe JTextField dengan import JTextField
     private JTextField namaText;//attributte noRekamMedisText bertipe JTextField dengan import JTextField
     private JTextField alamatText;//attributte noRekamMedisText bertipe JTextField dengan import JTextField
     private JComboBox tanggal;
     private JComboBox bulan;
     private JComboBox tahun;
+    private JComboBox Klinik;
     private JButton save;
 
     /**
@@ -62,9 +69,9 @@ public class TambahPasienBaruDialog extends JDialog {
         this.add(judulLabel);
 
         this.setLayout(null);
-        noRekamMedisLabel = new JLabel(" Nomor Rekam Medis   "); //membuat objek dengan JLabel text "nomor rekam medis"
-        noRekamMedisLabel.setBounds(10, 50, 300, 25); //ukuran untuk no rekam medis label
-        this.add(noRekamMedisLabel);
+        nik = new JLabel(" Nomor Rekam Medis   "); //membuat objek dengan JLabel text "nomor rekam medis"
+        nik.setBounds(10, 50, 300, 25); //ukuran untuk no rekam medis label
+        this.add(nik);
 
         noRekamMedisText = new JTextField(); //membuat objek noRekamMedisText dengan JTextField
         noRekamMedisText.setBounds(150, 50, 220, 25); //ukuran untuk no rekam medis text
@@ -130,13 +137,50 @@ public class TambahPasienBaruDialog extends JDialog {
         thnLahir.setBounds(300, 140, 70, 30);
         this.add(thnLahir);
         
+        klinik = new JLabel("KLINIK");
+        klinik.setBounds(10, 180, 70, 30);
+        this.add(klinik);
+        
+        String[] klinik = {"Pilih", "Penyakit Dalam", "Gigi", "Mata", "THT", "Mata"};
+        Klinik = new JComboBox(klinik);
+        Klinik.setBounds(65, 180, 100, 30);
+        this.add(Klinik);
+        
         save = new JButton("SAVE");
-        save.setBounds(150, 200, 100, 30);
+        save.setBounds(150, 230, 100, 30);
         this.add(save);
+        save.addActionListener(this);
     }
 //
 //    private void tanggalActionPerformed(java.awt.event.ActionEvent evt) {
 //        tanggal.actionPerformed(evt);
 //    }
+
+    @Override
+    public void actionPerformed(ActionEvent e) {
+        if (e.getSource() == save) {
+             try {
+                Pasien pasien = new Pasien();
+                Klinik klinik = new Klinik();
+                pasien.setNama(namaText.getText());
+                pasien.setAlamat(alamatText.getText());
+                pasien.setNik(nik.getText());
+                int tanggal = Integer.valueOf(this.tanggal.getSelectedItem().toString());
+                int bulan = Integer.valueOf(this.bulan.getSelectedItem().toString());
+                int tahun = Integer.valueOf(this.tahun.getSelectedItem().toString());
+                pasien.setTanggalLahir(tanggal);
+                pasien.setBulanLahir(bulan);
+                pasien.setTahunLahir(tahun);
+                String namaKlinik = String.valueOf(Klinik.getSelectedItem());
+                klinik.setNama(namaKlinik);
+                klinik.daftarKlinik(klinik);
+                Pasien.tambahPasienBaru(pasien);
+                JOptionPane.showMessageDialog(null, "Nomor Rekam Medis Anda : " + pasien.getNoRekamMedis());
+                JOptionPane.showMessageDialog(null, "Data Anda Telah Terdaftar");
+            } catch (Exception ex) {
+JOptionPane.showMessageDialog(null, ex);
+            }
+        }
+    }
 
 }

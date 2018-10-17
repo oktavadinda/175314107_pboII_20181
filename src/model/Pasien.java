@@ -5,6 +5,7 @@
  */
 package model;
 
+import java.io.File;
 import java.text.SimpleDateFormat;
 import java.util.ArrayList;
 import java.util.Date;
@@ -255,6 +256,13 @@ public class Pasien {
             }
         }
         return null;
+    }
+    public static void simpanDaftarPasien(File file){
+       
+        
+    }
+    public static void bacaDataPasien(File file){
+        
     }
 
     public void print() {
