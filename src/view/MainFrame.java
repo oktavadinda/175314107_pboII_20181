@@ -45,9 +45,9 @@ public class MainFrame extends JFrame implements ActionListener {
     public void init() {
         fileMenu = new JMenu("File");
         // buat menu bar
-        menuBar = new JMenuBar();
+        //menuBar = new JMenuBar();
         // set Titile
-        this.setTitle("Main Frame");
+        //this.setTitle("Main Frame");
         // buat menu
         this.setLayout(null);
         mainFrameLabel = new JLabel("Selamat Datang");
@@ -61,39 +61,44 @@ public class MainFrame extends JFrame implements ActionListener {
         mainFrameLabel1.setFont(new Font("Times New Roman", Font.PLAIN, 25));
         this.add(mainFrameLabel1);
         
-        fileMenu = new JMenu("File");
-        exitMenuItem = new JMenuItem("exit");
-        TambahPasienBaruDialog = new JMenuItem("Tambah Antrian");
-        DaftarAntrianDialog = new JMenuItem("Tambah Pasien");
-
+        TambahPasienBaruDialog = new JMenuItem("Tambah Pasien");
         fileMenu.add(TambahPasienBaruDialog);
+
+        //item tambah Antrian
+        DaftarAntrianDialog = new JMenuItem("Tambah Antrian");
         fileMenu.add(DaftarAntrianDialog);
+
+        //item exit 
+        exitMenuItem = new JMenuItem("Exit");
         fileMenu.add(exitMenuItem);
+
+        //menu bar
+        menuBar = new JMenuBar();
         menuBar.add(fileMenu);
 
-        exitMenuItem.addActionListener(this);
+        this.setJMenuBar(menuBar);
+
         TambahPasienBaruDialog.addActionListener(this);
         DaftarAntrianDialog.addActionListener(this);
+        exitMenuItem.addActionListener(this);
 
-        this.setJMenuBar(menuBar);
     }
 
     @Override
     public void actionPerformed(ActionEvent ae) {
-        if (ae.getSource() == exitMenuItem) {
-            System.exit(0);
-        }
         if (ae.getSource() == TambahPasienBaruDialog) {
-            DaftarAntrianDialog tambah = new DaftarAntrianDialog();
-            tambah.setSize(600, 350);
+            TambahPasienBaruDialog tambah = new TambahPasienBaruDialog();
+            tambah.setSize(550, 400);
             tambah.setVisible(true);
         }
         if (ae.getSource() == DaftarAntrianDialog) {
-            TambahPasienBaruDialog daftar = new TambahPasienBaruDialog();
-            daftar.setSize(400, 300);
+            DaftarAntrianDialog daftar = new DaftarAntrianDialog();
+            daftar.setSize(600, 350);
             daftar.setVisible(true);
         }
-
+        if (ae.getSource() == exitMenuItem) {
+            System.exit(0);
+        }
     }
 
 }

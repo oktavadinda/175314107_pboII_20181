@@ -226,10 +226,6 @@ public class Pasien {
 
     }
 
-    public String getNik() {
-        return nik;
-    }
-
     public void setNik(String nik) throws Exception {
         if (nik.length() == 16) {
             String Nik = nik;
@@ -238,6 +234,10 @@ public class Pasien {
         } else {
             throw new Exception("NIK anda salah");
         }
+    }
+
+    public String getNik() {
+        return nik;
     }
 
     public void getTanggalKelahiran() {
@@ -262,36 +262,39 @@ public class Pasien {
         }
         return null;
     }
-    public static void simpanDaftarPasien(File file){
-     try {
-       FileOutputStream fos = new FileOutputStream(file);
-         for (int i = 0; i < daftarPasienKlinik.size(); i++) {
-             String data = daftarPasienKlinik.get(i).toString();
-             fos.write(data.getBytes());
-         }
-         fos.close();
-     } catch (FileNotFoundException ex) {
-         Logger.getLogger(Pasien.class.getName()).log(Level.SEVERE, null,ex);
-     } catch (IOException ex) {
-         Logger.getLogger(Pasien.class.getName()).log(Level.SEVERE, null,ex);
-     }   
+
+    public static void simpanDaftarPasien(File file) {
+        try {
+            FileOutputStream fos = new FileOutputStream(file);
+            for (int i = 0; i < daftarPasienKlinik.size(); i++) {
+                String data = daftarPasienKlinik.get(i).toString();
+                fos.write(data.getBytes());
+            }
+            fos.close();
+        } catch (FileNotFoundException ex) {
+            Logger.getLogger(Pasien.class.getName()).log(Level.SEVERE, null, ex);
+        } catch (IOException ex) {
+            Logger.getLogger(Pasien.class.getName()).log(Level.SEVERE, null, ex);
+        }
     }
-    public static void bacaDaftarPasien(File file){
-        
+
+    public static void bacaDaftarPasien(File file) {
+
     }
-    public String toString(){
-        return noRekamMedis+"\t"+nama+"\t"+alamat+"\n";
+
+    public String toString() {
+        return noRekamMedis + "\t" + nama + "\t" + alamat + "\n";
     }
 
     public void print() {
-        System.out.printf("%-25s","No Rekam Medis Pasien");
+        System.out.printf("%-25s", "No Rekam Medis Pasien");
         System.out.println(" : " + getNoRekamMedis());
-        System.out.printf("%-25s","Nama Pasien");
+        System.out.printf("%-25s", "Nama Pasien");
         System.out.println(" : " + getNama());
-        System.out.printf("%-25s","Tempat Tanggal Lahir");
+        System.out.printf("%-25s", "Tempat Tanggal Lahir");
         System.out.println(" : " + getTempatLahir() + ", ");
         getTanggalKelahiran();
-        System.out.printf("%-25s","Alamat");
+        System.out.printf("%-25s", "Alamat");
         System.out.println(" : " + getAlamat());
         System.out.println();
     }

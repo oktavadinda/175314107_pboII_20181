@@ -132,7 +132,7 @@ public class DaftarAntrianDialog extends JDialog implements ActionListener {
         
         pisah1 = new JLabel("/");
         pisah1.setFont(new Font("Times New Roman", Font.BOLD, 22));
-        pisah1.setBounds(225, 126, 50, 50);
+        pisah1.setBounds(260, 126, 50, 50);
         this.add(pisah1);
         
         pisah2 = new JLabel("/");
@@ -149,8 +149,12 @@ public class DaftarAntrianDialog extends JDialog implements ActionListener {
         this.add(tahunText);
         
         klinikLabel = new JLabel("Klinik");
-        klinikLabel.setBounds(20, 170, 50, 15);
+        klinikLabel.setBounds(20, 175, 50, 15);
         this.add(klinikLabel);
+        
+        klinikText = new JTextField(100);
+        klinikText.setBounds(150, 170, 350, 20);
+        this.add(klinikText);
         
         daftarButton = new JButton("Daftar");
         daftarButton.setBounds(240, 210, 80, 30);
