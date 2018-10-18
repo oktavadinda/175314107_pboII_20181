@@ -30,10 +30,10 @@ public class DaftarAntrianDialog extends JDialog implements ActionListener {
     private JLabel judulLabel;
     private JLabel noRekamMedis;
     private JLabel namaLabel;
-    private JLabel ttlAntri;
-    private JLabel blnAntri;
-    private JLabel thnAntri;
+    private JLabel tanggalLahir;
     private JLabel alamatLabel;
+    private JLabel klinikLabel;
+    private JLabel pisah1, pisah2;
     private JTextField namaText;
     private JComboBox ttlAntriBox;
     private JComboBox blnAntriBox;
@@ -44,8 +44,11 @@ public class DaftarAntrianDialog extends JDialog implements ActionListener {
     private JTextField bulanText;
     private JTextField tahunText;
     private JTextField klinikText;
-    private JRadioButton tambahButton;
-    private JButton simpanButton;
+    private JComboBox tanggalButton;
+    private JComboBox bulanButton;
+    private JComboBox tahunButton;
+    private JComboBox klinikButton;
+    private JButton daftarButton;
     
     public DaftarAntrianDialog() {
         init();
@@ -59,126 +62,105 @@ public class DaftarAntrianDialog extends JDialog implements ActionListener {
     public void init() {
         
         this.setLayout(null);
-        judulLabel = new JLabel(" Daftar Antrian Pasien "); //membuat objek dengan JLabel judul yang bernama "Daftar Nama Pasien"
-        judulLabel.setBounds(185, 10, 200, 50); //ukuran untuk judul label
-        judulLabel.setFont(new Font(null, Font.PLAIN, 20));
+        
+        judulLabel = new JLabel("TAMBAH ANTRIAN PASIEN");
+        judulLabel.setBounds(230, 15, 150, 10);
         this.add(judulLabel);
         
-        this.setLayout(null);
-        noRekamMedis = new JLabel("No RM");
-        noRekamMedis.setBounds(10, 55, 70, 60);
-        noRekamMedis.setFont(new Font(null, Font.PLAIN, 14));
+        noRekamMedis = new JLabel("No Rekam Medis");
+        noRekamMedis.setBounds(20, 50, 100, 15);
         this.add(noRekamMedis);
         
-        this.setLayout(null);
-        
         noRekamMedisText = new JTextField();
-        noRekamMedisText.setBounds(100, 70, 130, 30);
-        noRekamMedisText.setFont(new Font(null, Font.PLAIN, 14));
+        noRekamMedisText.setBounds(150, 50, 350, 20);
         this.add(noRekamMedisText);
         
         noRekamMedisText.addActionListener(new ActionListener() {
             @Override
-            public void actionPerformed(ActionEvent e) {
+            public void actionPerformed(ActionEvent ae) {
                 Pasien test = Pasien.cariPasien(noRekamMedisText.getText());
                 if (test == null) {
-                    JOptionPane.showMessageDialog(null, "Data Pasien " + noRekamMedisText.getText() + " Pasien Tidak Terdaftar");
-                } else {
+                    JOptionPane.showMessageDialog(null, "Data Pasien" + noRekamMedisText.getText()+"Pasien Tidak Terdaftar");
+                    
+                }else {
                     try {
                         Klinik klinik = new Klinik();
                         namaText.setText(test.getNama());
                         alamatText.setText(test.getAlamat());
-                        String tanggal = String.valueOf(test.getTanggalLahir());
-                        String bulan = String.valueOf(test.getBulanLahir());
-                        String tahun = String.valueOf(test.getTahunLahir());
-                        //String namaKlinik = String.valueOf(klinik.getNama());
-                        tanggalText.setText(tanggal);
-                        bulanText.setText(bulan);
-                        tahunText.setText(tahun);
+                        String tgl = String.valueOf(test.getTanggalLahir());
+                        String bln = String.valueOf(test.getBulanLahir());
+                        String thn = String.valueOf(test.getTahunLahir());
+                        tanggalText.setText(tgl);
+                        bulanText.setText(bln);
+                        tahunText.setText(thn);
                         klinikText.setText(klinik.getNama());
-                         
-                    } catch (Exception ex) {
-                        JOptionPane.showMessageDialog(null, ex);
+                    } catch (Exception e){
+                        JOptionPane.showMessageDialog(null, e);
                     }
                 }
-            }
+                        }
         });
-        
-        this.setLayout(null);
         namaLabel = new JLabel("Nama");
-        namaLabel.setBounds(280, 55, 70, 60);
-        namaLabel.setFont(new Font(null, Font.PLAIN, 14));
+        namaLabel.setBounds(20, 80, 50,15);
         this.add(namaLabel);
         
-        namaText = new JTextField();
-        namaText.setBounds(350, 70, 190, 30);
-        namaText.setFont(new Font(null, Font.PLAIN, 14));
+        // membuat object namatext yang bertipe JTextField
+        namaText = new JTextField(100);
+        // mengatur posisi dan ukuran object
+        namaText.setBounds(150, 80, 350, 20);
+        //menambah namatext ke TambahAntrianDialog
         this.add(namaText);
+        //namatext memanggil method addActionListener
+        namaText.addActionListener(this);
         
         alamatLabel = new JLabel("Alamat");
-        alamatLabel.setBounds(280, 95, 70, 60);
-        alamatLabel.setFont(new Font(null, Font.PLAIN, 14));
+        alamatLabel.setBounds(20, 110,100, 15);
         this.add(alamatLabel);
         
-        alamatText = new JTextField();
-        alamatText.setBounds(350, 110, 190, 30);
-        alamatText.setFont(new Font(null, Font.PLAIN, 14));
+        alamatText = new JTextField(100);
+        alamatText.setBounds(150, 110, 350, 20);
         this.add(alamatText);
+        alamatText.addActionListener(this);
         
-        ttlAntri = new JLabel("Tgl Antri");
-        ttlAntri.setBounds(10, 95, 200, 60);
-        ttlAntri.setFont(new Font(null, Font.PLAIN, 14));
-        this.add(ttlAntri);
-        JComboBox tglAntri = new JComboBox();
-        for (int i = 1; i < 32; i++) {
-            tglAntri.addItem(i);
-        }
-        tglAntri.setBounds(100, 110, 50, 30);
-        this.add(tglAntri);
+        tanggalLahir = new JLabel("Tanggal Lahir");
+        tanggalLahir.setBounds(20, 140, 350, 15);
+        this.add(tanggalLahir);
         
-        blnAntri = new JLabel("Bulan");
-        blnAntri.setBounds(10, 135, 50, 60);
-        blnAntri.setFont(new Font(null, Font.PLAIN, 14));
-        this.add(blnAntri);
-        JComboBox blnAntri = new JComboBox();
-        blnAntri.addItem("JAN");
-        blnAntri.addItem("FEB");
-        blnAntri.addItem("MAR");
-        blnAntri.addItem("APR");
-        blnAntri.addItem("MAY");
-        blnAntri.addItem("JUN");
-        blnAntri.addItem("JUL");
-        blnAntri.addItem("AUG");
-        blnAntri.addItem("SEP");
-        blnAntri.addItem("OCT");
-        blnAntri.addItem("NOV");
-        blnAntri.addItem("DEC");
-        blnAntri.setBounds(100, 150, 50, 30);
-        this.add(blnAntri);
+        tanggalText = new JTextField(100);
+        tanggalText.setBounds(150, 140, 100, 20);
+        this.add(tanggalText);
         
-        thnAntri = new JLabel("Tahun");
-        thnAntri.setBounds(10, 175, 50, 60);
-        thnAntri.setFont(new Font(null, Font.PLAIN, 14));
-        this.add(thnAntri);        
-        JComboBox thnAntri = new JComboBox();
-        for (int i = 1950; i <= 2018; i++) {
-            thnAntri.addItem(i);
-        }
-        thnAntri.setBounds(100, 190, 70, 30);
-        this.add(thnAntri);
-
-        // ttlText.setBorder(BorderFactory.createLineBorder(Color.pink));
-        this.setLayout(null);
-        simpanButton = new JButton("SAVE");
-        simpanButton.setBounds(250, 250, 100, 30);
-        simpanButton.setFont(new Font(null, Font.BOLD, 15));
-        this.add(simpanButton);
+        pisah1 = new JLabel("/");
+        pisah1.setFont(new Font("Times New Roman", Font.BOLD, 22));
+        pisah1.setBounds(225, 126, 50, 50);
+        this.add(pisah1);
         
+        pisah2 = new JLabel("/");
+        pisah2.setFont(new Font("Times New Roman", Font.BOLD, 22));
+        pisah2.setBounds(383, 126, 50, 50);
+        this.add(pisah2);
+        
+        bulanText = new JTextField(100);
+        bulanText.setBounds(275, 140, 100, 20);
+        this.add(bulanText);
+        
+        tahunText = new JTextField(100);
+        tahunText.setBounds(400, 140, 100, 20);
+        this.add(tahunText);
+        
+        klinikLabel = new JLabel("Klinik");
+        klinikLabel.setBounds(20, 170, 50, 15);
+        this.add(klinikLabel);
+        
+        daftarButton = new JButton("Daftar");
+        daftarButton.setBounds(240, 210, 80, 30);
+        this.add(daftarButton);
+        daftarButton.addActionListener(this);
     }
     
     @Override
     public void actionPerformed(ActionEvent ae) {
-        if (ae.getSource() == tambahButton) {
+        if (ae.getSource() == tanggalButton) {
             Pasien test = Pasien.cariPasien(noRekamMedisText.getText());
             for (int i = 0; i < Pasien.daftarPasienKlinik.size(); i++) {
                 if (test == Pasien.daftarPasienKlinik.get(i)) {

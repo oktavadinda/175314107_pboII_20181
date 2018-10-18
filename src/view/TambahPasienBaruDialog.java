@@ -8,12 +8,14 @@ package view;
 import java.awt.Font;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
+import javax.swing.ButtonGroup;
 
 import javax.swing.JButton;
 import javax.swing.JComboBox;
 import javax.swing.JDialog;
 import javax.swing.JLabel;
 import javax.swing.JOptionPane;
+import javax.swing.JRadioButton;
 import javax.swing.JTextField;
 import model.Klinik;
 import model.Pasien;
@@ -32,19 +34,20 @@ public class TambahPasienBaruDialog extends JDialog implements ActionListener{
     private JLabel judulLabel; //attributte judulLabel bertipe JLabel dengan import JLabel
     private JLabel nik; //attributte noRekamMedisLabel bertipe JLabel dengan import JLabel
     private JLabel tanggalLabel;
-    private JLabel bulanLabel;
-    private JLabel tahunLabel;
     private JLabel nama;
     private JLabel alamat;
     private JLabel klinik;
-    private JTextField noRekamMedisText;//attributte noRekamMedisText bertipe JTextField dengan import JTextField
+    private JLabel jenisKelamin;
+    private JTextField nikText;//attributte noRekamMedisText bertipe JTextField dengan import JTextField
     private JTextField namaText;//attributte noRekamMedisText bertipe JTextField dengan import JTextField
     private JTextField alamatText;//attributte noRekamMedisText bertipe JTextField dengan import JTextField
+    private JRadioButton laki_laki;   
+    private JRadioButton perempuan;   
     private JComboBox tanggal;
     private JComboBox bulan;
     private JComboBox tahun;
     private JComboBox Klinik;
-    private JButton save;
+    private JButton daftar;
 
     /**
      * fungsi membaca DaftarAntrianDialog fungsi init digunakan untuk
@@ -53,7 +56,10 @@ public class TambahPasienBaruDialog extends JDialog implements ActionListener{
     public TambahPasienBaruDialog() {
         init();
     }
-
+    public TambahPasienBaruDialog(String title){
+        this.setTitle(title);
+        init();
+    }
     /**
      * fungsi membaca init
      */
@@ -64,78 +70,79 @@ public class TambahPasienBaruDialog extends JDialog implements ActionListener{
          * layout.
          */
         this.setLayout(null);
-        judulLabel = new JLabel(" Daftar Pasien "); //membuat objek dengan JLabel judul yang bernama "Daftar Nama Pasien"
+        judulLabel = new JLabel(" DAFTAR PASIEN BARU "); //membuat objek dengan JLabel judul yang bernama "Daftar Nama Pasien"
         judulLabel.setBounds(98, 10, 200, 10); //ukuran untuk judul label
         this.add(judulLabel);
 
         this.setLayout(null);
-        nik = new JLabel(" Nomor Rekam Medis   "); //membuat objek dengan JLabel text "nomor rekam medis"
+        nik = new JLabel(" NIK "); //membuat objek dengan JLabel text "nomor rekam medis"
         nik.setBounds(10, 50, 300, 25); //ukuran untuk no rekam medis label
         this.add(nik);
 
-        noRekamMedisText = new JTextField(); //membuat objek noRekamMedisText dengan JTextField
-        noRekamMedisText.setBounds(150, 50, 220, 25); //ukuran untuk no rekam medis text
-        this.add(noRekamMedisText);
         
-        this.setLayout(null);
+        nikText = new JTextField(100); //membuat objek noRekamMedisText dengan JTextField
+        nikText.setBounds(150, 50, 220, 25); //ukuran untuk no rekam medis text
+        this.add(nikText);
+        
         nama = new JLabel(" Nama   "); //membuat objek dengan JLabel text "nomor rekam medis"
         nama.setBounds(10, 80, 300, 25); //ukuran untuk no rekam medis label
         this.add(nama);
 
-        namaText = new JTextField(); //membuat objek noRekamMedisText dengan JTextField
+        namaText = new JTextField(100); //membuat objek noRekamMedisText dengan JTextField
         namaText.setBounds(150, 80, 220, 25); //ukuran untuk no rekam medis text
         this.add(namaText);
         
-        this.setLayout(null);
         alamat = new JLabel(" Alamat   "); //membuat objek dengan JLabel text "nomor rekam medis"
         alamat.setBounds(10, 110, 300, 25); //ukuran untuk no rekam medis label
         this.add(alamat);
 
-        alamatText = new JTextField(); //membuat objek noRekamMedisText dengan JTextField
+        alamatText = new JTextField(100); //membuat objek noRekamMedisText dengan JTextField
         alamatText.setBounds(150, 110, 220, 25); //ukuran untuk no rekam medis text
         this.add(alamatText);
 
-        this.setLayout(null);
-        tanggalLabel = new JLabel("Tgl Lahir");
-        tanggalLabel.setBounds(10, 140, 80, 30);
+        jenisKelamin = new JLabel("Jenis Kelamin");
+        jenisKelamin.setBounds(20, 140, 100, 15);
+        this.add(jenisKelamin);
+
+        laki_laki = new JRadioButton("Laki-Laki");
+        laki_laki.setBounds(150, 140, 100, 20);
+        this.add(laki_laki);
+
+        perempuan = new JRadioButton("Perempuan");
+        perempuan.setBounds(150, 170, 100, 20);
+        this.add(perempuan);
+        
+        ButtonGroup Jkelamin = new ButtonGroup();
+        Jkelamin.add(laki_laki);
+        Jkelamin.add(perempuan);
+        
+        tanggalLabel = new JLabel("Tanggal Lahir");
+        tanggalLabel.setBounds(20, 200, 150, 30);
         this.add(tanggalLabel);
-        JComboBox tglLahir = new JComboBox();
-        for (int i = 1; i < 32; i++) {
-            tglLahir.addItem(i);
-        }
-        tglLahir.setBounds(65, 140, 50, 30);
-        this.add(tglLahir);
-
-        this.setLayout(null);
-        bulanLabel = new JLabel("Bulan");
-        bulanLabel.setBounds(140, 140, 80, 30);
-        this.add(bulanLabel);
-        JComboBox blnLahir = new JComboBox();
-        blnLahir.addItem("JAN");
-        blnLahir.addItem("FEB");
-        blnLahir.addItem("MAR");
-        blnLahir.addItem("APR");
-        blnLahir.addItem("MAY");
-        blnLahir.addItem("JUN");
-        blnLahir.addItem("JUL");
-        blnLahir.addItem("AUG");
-        blnLahir.addItem("SEP");
-        blnLahir.addItem("OCT");
-        blnLahir.addItem("NOV");
-        blnLahir.addItem("DEC");
-        blnLahir.setBounds(180, 140, 50, 30);
-        this.add(blnLahir);
-
-        this.setLayout(null);
-        tahunLabel = new JLabel("Tahun");
-        tahunLabel.setBounds(255, 140, 70, 30);
-        this.add(tahunLabel);
-        JComboBox thnLahir = new JComboBox();
-        for (int i = 1950; i <= 2018; i++) {
-            thnLahir.addItem(i);
-        }
-        thnLahir.setBounds(300, 140, 70, 30);
-        this.add(thnLahir);
+        //Tombol Tanggal Lahir
+        String[] tanggal = {"Tanggal", "1", "2", "3", "4", "5", "6", "7", "8", "9", "10",
+            "11", "12", "13", "14", "15", "16", "17", "18", "19", "20", "21", "22", "23", "24",
+            "25", "26", "27", "28", "29", "30", "31"};
+        this.tanggal = new JComboBox(tanggal);
+        this.tanggal.setBounds(150, 200, 100, 20);
+        this.add(this.tanggal);
+                   
+        String[] bulan = {"Bulan", "JAN", "FEB", "MAR", "APR", "MAY", "JUN", "JUL", "AUG", "SEP", "OCT", "NOV", "DEC"};
+        this.bulan = new JComboBox(bulan);
+        this.bulan.setBounds(275, 200, 100, 20);
+        this.add(this.bulan);
+        
+        String[] tahun = {"Tahun", "1945", "1946", "1947", "1948", "1949", "1950", "1951", 
+            "1952", "1953", "1954", "1955", "1956", "1957", "1958","1959", "1960", "1961", 
+            "1962", "1963", "1964", "1965", "1966", "1967", "1968","1969", "1970", "1971", 
+            "1972", "1973", "1974", "1975", "1976", "1977", "1978","1979", "1980", "1981", 
+            "1982", "1983", "1984", "1985", "1986", "1987", "1988","1989", "1990", "1991", 
+            "1992", "1993", "1994", "1995", "1996", "1997", "1998","1999", "2000", "2001", 
+            "2002", "2003", "2004", "2005", "2006", "2007", "2008", "2009","2010", "2011", 
+            "2012", "2013", "2014", "2015", "2016", "2017", "2018", "2019","2020", "2021"};
+        this.tahun = new JComboBox(tahun);
+        this.tahun.setBounds(400, 200, 100, 20);
+        this.add(this.tahun);
         
         klinik = new JLabel("KLINIK");
         klinik.setBounds(10, 180, 70, 30);
@@ -146,19 +153,15 @@ public class TambahPasienBaruDialog extends JDialog implements ActionListener{
         Klinik.setBounds(65, 180, 100, 30);
         this.add(Klinik);
         
-        save = new JButton("SAVE");
-        save.setBounds(150, 230, 100, 30);
-        this.add(save);
-        save.addActionListener(this);
+        daftar = new JButton("DAFTAR");
+        daftar.setBounds(150, 230, 100, 30);
+        this.add(daftar);
+        daftar.addActionListener(this);
     }
-//
-//    private void tanggalActionPerformed(java.awt.event.ActionEvent evt) {
-//        tanggal.actionPerformed(evt);
-//    }
 
     @Override
     public void actionPerformed(ActionEvent e) {
-        if (e.getSource() == save) {
+        if (e.getSource() == daftar) {
              try {
                 Pasien pasien = new Pasien();
                 Klinik klinik = new Klinik();
@@ -178,7 +181,7 @@ public class TambahPasienBaruDialog extends JDialog implements ActionListener{
                 JOptionPane.showMessageDialog(null, "Nomor Rekam Medis Anda : " + pasien.getNoRekamMedis());
                 JOptionPane.showMessageDialog(null, "Data Anda Telah Terdaftar");
             } catch (Exception ex) {
-JOptionPane.showMessageDialog(null, ex);
+                JOptionPane.showMessageDialog(null, ex);
             }
         }
     }
