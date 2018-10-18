@@ -247,11 +247,11 @@ public class Pasien {
     }
 
     public static ArrayList<Pasien> daftarPasienKlinik() {
-        return daftarPasienKlinik;
+        return daftarPasienKlinik();
     }
 
     public static void tambahPasienBaru(Pasien pasien) {
-        daftarPasienKlinik.add(pasien);
+        daftarPasienKlinik().add(pasien);
     }
 
     public static Pasien cariPasien(String noRM) {
