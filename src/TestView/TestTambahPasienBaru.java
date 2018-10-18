@@ -18,7 +18,7 @@ public class TestTambahPasienBaru {
      */
     public static void main(String[] args) {
         TambahPasienBaruDialog test = new TambahPasienBaruDialog();
-        test.setSize(400, 300);
+        test.setSize(550, 400);
         test.setVisible(true);
     }
     

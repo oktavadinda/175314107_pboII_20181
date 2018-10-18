@@ -71,7 +71,7 @@ public class TambahPasienBaruDialog extends JDialog implements ActionListener{
          */
         this.setLayout(null);
         judulLabel = new JLabel(" DAFTAR PASIEN BARU "); //membuat objek dengan JLabel judul yang bernama "Daftar Nama Pasien"
-        judulLabel.setBounds(98, 10, 200, 10); //ukuran untuk judul label
+        judulLabel.setBounds(200, 10, 200, 10); //ukuran untuk judul label
         this.add(judulLabel);
 
         this.setLayout(null);
@@ -101,7 +101,7 @@ public class TambahPasienBaruDialog extends JDialog implements ActionListener{
         this.add(alamatText);
 
         jenisKelamin = new JLabel("Jenis Kelamin");
-        jenisKelamin.setBounds(20, 140, 100, 15);
+        jenisKelamin.setBounds(10, 140, 100, 15);
         this.add(jenisKelamin);
 
         laki_laki = new JRadioButton("Laki-Laki");
@@ -117,19 +117,19 @@ public class TambahPasienBaruDialog extends JDialog implements ActionListener{
         Jkelamin.add(perempuan);
         
         tanggalLabel = new JLabel("Tanggal Lahir");
-        tanggalLabel.setBounds(20, 200, 150, 30);
+        tanggalLabel.setBounds(10, 235, 150, 30);
         this.add(tanggalLabel);
         //Tombol Tanggal Lahir
         String[] tanggal = {"Tanggal", "1", "2", "3", "4", "5", "6", "7", "8", "9", "10",
             "11", "12", "13", "14", "15", "16", "17", "18", "19", "20", "21", "22", "23", "24",
             "25", "26", "27", "28", "29", "30", "31"};
         this.tanggal = new JComboBox(tanggal);
-        this.tanggal.setBounds(150, 200, 100, 20);
+        this.tanggal.setBounds(150, 240, 100, 20);
         this.add(this.tanggal);
                    
         String[] bulan = {"Bulan", "JAN", "FEB", "MAR", "APR", "MAY", "JUN", "JUL", "AUG", "SEP", "OCT", "NOV", "DEC"};
         this.bulan = new JComboBox(bulan);
-        this.bulan.setBounds(275, 200, 100, 20);
+        this.bulan.setBounds(275, 240, 100, 20);
         this.add(this.bulan);
         
         String[] tahun = {"Tahun", "1945", "1946", "1947", "1948", "1949", "1950", "1951", 
@@ -141,20 +141,20 @@ public class TambahPasienBaruDialog extends JDialog implements ActionListener{
             "2002", "2003", "2004", "2005", "2006", "2007", "2008", "2009","2010", "2011", 
             "2012", "2013", "2014", "2015", "2016", "2017", "2018", "2019","2020", "2021"};
         this.tahun = new JComboBox(tahun);
-        this.tahun.setBounds(400, 200, 100, 20);
+        this.tahun.setBounds(400, 240, 100, 20);
         this.add(this.tahun);
         
         klinik = new JLabel("KLINIK");
-        klinik.setBounds(10, 180, 70, 30);
+        klinik.setBounds(10, 200, 70, 30);
         this.add(klinik);
         
         String[] klinik = {"Pilih", "Penyakit Dalam", "Gigi", "Mata", "THT", "Mata"};
         Klinik = new JComboBox(klinik);
-        Klinik.setBounds(65, 180, 100, 30);
+        Klinik.setBounds(150, 200, 100, 30);
         this.add(Klinik);
         
         daftar = new JButton("DAFTAR");
-        daftar.setBounds(150, 230, 100, 30);
+        daftar.setBounds(225, 280, 100, 30);
         this.add(daftar);
         daftar.addActionListener(this);
     }
