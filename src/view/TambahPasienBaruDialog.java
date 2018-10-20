@@ -167,7 +167,7 @@ public class TambahPasienBaruDialog extends JDialog implements ActionListener{
                 Klinik klinik = new Klinik();
                 pasien.setNama(namaText.getText());
                 pasien.setAlamat(alamatText.getText());
-                pasien.setNik(nik.getText());
+                pasien.setNIK(nikText.getText());
                 int tanggal = Integer.valueOf(this.tanggal.getSelectedItem().toString());
                 int bulan = Integer.valueOf(this.bulan.getSelectedItem().toString());
                 int tahun = Integer.valueOf(this.tahun.getSelectedItem().toString());

@@ -34,9 +34,9 @@ public class Pasien {
     private int tanggalLahir;
     private int bulanLahir;
     private int tahunLahir;
-    private String nik;
+    private String NIK;
 
-    public static ArrayList<Pasien> daftarPasienKlinik
+    public static ArrayList<Pasien> daftarPasien
             = new ArrayList<Pasien>();
 
     /**
@@ -52,14 +52,14 @@ public class Pasien {
      *
      * @param nama
      */
-    public Pasien(String nama, String alamat, String tempatLahir, int tanggalLahir, int bulanLahir, int tahunLahir, String nik) {
+    public Pasien(String nama, String alamat, String tempatLahir, int tanggalLahir, int bulanLahir, int tahunLahir, String NIK) {
         this.nama = nama;
         this.alamat = alamat;
         this.tempatLahir = tempatLahir;
         this.tanggalLahir = tanggalLahir;
         this.bulanLahir = bulanLahir;
         this.tahunLahir = tahunLahir;
-        this.nik = nik;
+        this.NIK = NIK;
     }
 
     public Pasien(String nama, int tanggalLahir, int bulanLahir, int tahunLahir, String noRM) {
@@ -69,30 +69,6 @@ public class Pasien {
         this.tahunLahir = tahunLahir;
     }
 
-    /**
-     * membaca getNoRekamMedis untuk mengembalikan nilai noRekamMedis
-     *
-     * @return noRekamMedis
-     */
-    public String getNoRekamMedis() {// buat getNoRekanMedis bertipe String
-        return noRekamMedis;
-    }
-
-    /**
-     * membaca method setNoRekamMedis untuk memasukkan no rekam medis
-     *
-     * @param noRekamMedis
-     * @throws Exception
-     */
-    public void setNoRekamMedis(String noRekamMedis) throws Exception {//buat method setNoRekamMedis menggunakan throws Exception
-        //buat looping menggunakan if dengan parameter no rekam medis  dari 6-20
-        if (noRekamMedis.length() == 16) {
-            this.noRekamMedis = noRekamMedis;
-        } else {
-            throw new Exception("Nomor Rekam Medis anda Salah");
-        }
-
-    }
 
     /**
      * berfungsi memanggil getNama
@@ -160,6 +136,44 @@ public class Pasien {
         return tanggalLahir;
     }
 
+    public void setNIK(String NIK) throws Exception {
+        if (NIK.length() == 16) {
+            String nik = NIK;
+            this.setNoRekamMedis(NIK);
+            this.NIK= NIK;
+        } else {
+            throw new Exception("Nomor Induk Kependudukan terdiri dari 16 karakter");
+        }
+    }
+
+    public String getNik() {
+        return NIK;
+    }
+
+    /**
+     * membaca getNoRekamMedis untuk mengembalikan nilai noRekamMedis
+     *
+     * @return noRekamMedis
+     */
+    public String getNoRekamMedis() {// buat getNoRekanMedis bertipe String
+        return noRekamMedis;
+    }
+
+    /**
+     * membaca method setNoRekamMedis untuk memasukkan no rekam medis
+     *
+     * @param noRekamMedis
+     * @throws Exception
+     */
+    public void setNoRekamMedis(String noRekamMedis) throws Exception {//buat method setNoRekamMedis menggunakan throws Exception
+        //buat looping menggunakan if dengan parameter no rekam medis  dari 6-20
+        if (noRekamMedis.length() == 16) {
+            this.noRekamMedis = noRekamMedis;
+        } else {
+            throw new Exception("Nomor Rekam Medis anda Salah");
+        }
+
+    }
     /**
      * membaca setTanggalLahir yang berfungsi sebagai tempat menginput tanggal
      * lahir yang telah diberikan ketentuan yaitu mulai dari 1-31
@@ -226,20 +240,6 @@ public class Pasien {
 
     }
 
-    public void setNik(String nik) throws Exception {
-        if (nik.length() == 16) {
-            String Nik = nik;
-            this.setNoRekamMedis(nik);
-            this.nik = nik;
-        } else {
-            throw new Exception("NIK anda salah");
-        }
-    }
-
-    public String getNik() {
-        return nik;
-    }
-
     public void getTanggalKelahiran() {
         Date tanggalKelahiran = new Date(getTahunLahir() - 1945, getBulanLahir() - 1, getTanggalLahir());
         SimpleDateFormat ft = new SimpleDateFormat("dd - MM - yyyy");
@@ -255,9 +255,9 @@ public class Pasien {
     }
 
     public static Pasien cariPasien(String noRM) {
-        for (int i = 0; i < daftarPasienKlinik.size(); i++) {
-            if (daftarPasienKlinik.get(i).getNik().equals(noRM)) {
-                return daftarPasienKlinik.get(i);
+        for (int i = 0; i < daftarPasien.size(); i++) {
+            if (daftarPasien.get(i).getNik().equals(noRM)) {
+                return daftarPasien.get(i);
             }
         }
         return null;
@@ -266,8 +266,8 @@ public class Pasien {
     public static void simpanDaftarPasien(File file) {
         try {
             FileOutputStream fos = new FileOutputStream(file);
-            for (int i = 0; i < daftarPasienKlinik.size(); i++) {
-                String data = daftarPasienKlinik.get(i).toString();
+            for (int i = 0; i < daftarPasien.size(); i++) {
+                String data = daftarPasien.get(i).toString();
                 fos.write(data.getBytes());
             }
             fos.close();
