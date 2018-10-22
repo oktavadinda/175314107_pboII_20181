@@ -285,7 +285,7 @@ public class Pasien {
     }
 
     public static void bacaDaftarPasien(File file) {
-        throw new UnsupportedOperationException("Tidak ada");
+        
     }
 
     public String toString() {
