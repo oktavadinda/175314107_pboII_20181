@@ -5,7 +5,9 @@
  */
 package model;
 
+import TestView.TestStream2;
 import java.io.File;
+import java.io.FileInputStream;
 import java.io.FileNotFoundException;
 import java.io.FileOutputStream;
 import java.io.IOException;
@@ -285,7 +287,56 @@ public class Pasien {
     }
 
     public static void bacaDaftarPasien(File file) {
-        
+        FileInputStream fis = null;
+        try {
+            String hasilBaca = "";
+            fis = new FileInputStream(file);
+            int dataInt;
+            boolean isNoRM = false;
+            boolean isNama = false;
+            boolean isAlamat = false;
+            Pasien temp = new Pasien();
+
+            while ((dataInt = fis.read()) != -1) {
+                if ((char) dataInt != '\n') {
+                    if ((char) dataInt != '\t' && isNoRM == false) {
+                        hasilBaca = hasilBaca + (char) dataInt;
+                    } else if ((char) dataInt == '\t' && isNoRM == false) {
+                        temp.setNoRekamMedis(hasilBaca);
+                        hasilBaca = "";
+                        isNoRM = true;
+                    } else if ((char) dataInt != '\t' && isNoRM == true && isNama == false) {
+                        hasilBaca = hasilBaca + (char) dataInt;
+                    } else if ((char) dataInt == '\t' && isNoRM == true && isNama == false) {
+                        temp.setNama(hasilBaca);
+                        hasilBaca = "";
+                        isNama = true;
+                    } else if ((char) dataInt != '\t' && isNoRM == true && isNama == true && isAlamat == false) {
+                        hasilBaca = hasilBaca + (char) dataInt;
+                    }
+                } else {
+                    temp.setAlamat(hasilBaca);
+                    hasilBaca = "";
+                    isAlamat = true;
+                    Pasien.tambahPasienBaru(temp);
+                    isNoRM = false;
+                    isNama = false;
+                    isAlamat = false;
+                    temp = new Pasien();
+                }
+            }
+
+        } catch (FileNotFoundException ex) {
+            Logger.getLogger(TestStream2.class.getName()).log(Level.SEVERE, null, ex);
+        } catch (IOException ex) {
+            Logger.getLogger(TestStream2.class.getName()).log(Level.SEVERE, null, ex);
+        } finally {
+            try {
+                fis.close();
+            } catch (IOException ex) {
+                Logger.getLogger(TestStream2.class.getName()).log(Level.SEVERE, null, ex);
+            }
+}
     }
 
     public String toString() {
