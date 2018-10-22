@@ -127,7 +127,7 @@ public class TambahPasienBaruDialog extends JDialog implements ActionListener{
         this.tanggal.setBounds(150, 240, 100, 20);
         this.add(this.tanggal);
                    
-        String[] bulan = {"Bulan", "JAN", "FEB", "MAR", "APR", "MAY", "JUN", "JUL", "AUG", "SEP", "OCT", "NOV", "DEC"};
+        String[] bulan = {"Bulan", "1", "2", "3", "4", "5", "6", "7", "8", "9", "10", "11", "12"};
         this.bulan = new JComboBox(bulan);
         this.bulan.setBounds(275, 240, 100, 20);
         this.add(this.bulan);
