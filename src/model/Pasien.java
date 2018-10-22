@@ -71,7 +71,6 @@ public class Pasien {
         this.tahunLahir = tahunLahir;
     }
 
-
     /**
      * berfungsi memanggil getNama
      *
@@ -142,7 +141,7 @@ public class Pasien {
         if (NIK.length() == 16) {
             String nik = NIK;
             this.setNoRekamMedis(NIK);
-            this.NIK= NIK;
+            this.NIK = NIK;
         } else {
             throw new Exception("Nomor Induk Kependudukan terdiri dari 16 karakter");
         }
@@ -176,6 +175,7 @@ public class Pasien {
         }
 
     }
+
     /**
      * membaca setTanggalLahir yang berfungsi sebagai tempat menginput tanggal
      * lahir yang telah diberikan ketentuan yaitu mulai dari 1-31
@@ -255,10 +255,12 @@ public class Pasien {
     public static void tambahPasienBaru(Pasien pasien) {
         daftarPasienKlinik.add(pasien);
     }
-    public static ArrayList<Pasien> getDaftarPasienKlinik(){
+
+    public static ArrayList<Pasien> getDaftarPasienKlinik() {
         return daftarPasienKlinik;
     }
-    public static void setDaftarPasienKlinik(ArrayList<Pasien> daftarPasien){
+
+    public static void setDaftarPasienKlinik(ArrayList<Pasien> daftarPasien) {
         daftarPasienKlinik = daftarPasien;
     }
 
@@ -287,58 +289,19 @@ public class Pasien {
     }
 
     public static void bacaDaftarPasien(File file) {
-        FileInputStream fis = null;
+        FileInputStream fos = null;
         try {
             String hasilBaca = "";
-            fis = new FileInputStream(file);
+            fos = new FileInputStream(file);
             int dataInt;
             boolean isNoRM = false;
             boolean isNama = false;
             boolean isAlamat = false;
             Pasien temp = new Pasien();
 
-            while ((dataInt = fis.read()) != -1) {
-                if ((char) dataInt != '\n') {
-                    if ((char) dataInt != '\t' && isNoRM == false) {
-                        hasilBaca = hasilBaca + (char) dataInt;
-                    } else if ((char) dataInt == '\t' && isNoRM == false) {
-                        temp.setNoRekamMedis(hasilBaca);
-                        hasilBaca = "";
-                        isNoRM = true;
-                    } else if ((char) dataInt != '\t' && isNoRM == true && isNama == false) {
-                        hasilBaca = hasilBaca + (char) dataInt;
-                    } else if ((char) dataInt == '\t' && isNoRM == true && isNama == false) {
-                        temp.setNama(hasilBaca);
-                        hasilBaca = "";
-                        isNama = true;
-                    } else if ((char) dataInt != '\t' && isNoRM == true && isNama == true && isAlamat == false) {
-                        hasilBaca = hasilBaca + (char) dataInt;
-                    }
-                } else {
-                    temp.setAlamat(hasilBaca);
-                    hasilBaca = "";
-                    isAlamat = true;
-                    Pasien.tambahPasienBaru(temp);
-                    isNoRM = false;
-                    isNama = false;
-                    isAlamat = false;
-                    temp = new Pasien();
-                }
-            }
-
-        } catch (FileNotFoundException ex) {
-            Logger.getLogger(TestStream2.class.getName()).log(Level.SEVERE, null, ex);
-        } catch (IOException ex) {
-            Logger.getLogger(TestStream2.class.getName()).log(Level.SEVERE, null, ex);
-        } finally {
-            try {
-                fis.close();
-            } catch (IOException ex) {
-                Logger.getLogger(TestStream2.class.getName()).log(Level.SEVERE, null, ex);
-            }
-}
+            
     }
-
+    }
     public String toString() {
         return noRekamMedis + "\t" + nama + "\t" + alamat + "\n";
     }
