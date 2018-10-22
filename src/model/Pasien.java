@@ -36,7 +36,7 @@ public class Pasien {
     private int tahunLahir;
     private String NIK;
 
-    public static ArrayList<Pasien> daftarPasien
+    public static ArrayList<Pasien> daftarPasienKlinik
             = new ArrayList<Pasien>();
 
     /**
@@ -245,19 +245,25 @@ public class Pasien {
         SimpleDateFormat ft = new SimpleDateFormat("dd - MM - yyyy");
         System.out.println(ft.format(tanggalKelahiran));
     }
-
-    public static ArrayList<Pasien> daftarPasienKlinik() {
-        return daftarPasienKlinik();
-    }
+//
+//    public static ArrayList<Pasien> daftarPasienKlinik() {
+//        return daftarPasienKlinik();
+//    }
 
     public static void tambahPasienBaru(Pasien pasien) {
-        daftarPasienKlinik().add(pasien);
+        daftarPasienKlinik.add(pasien);
+    }
+    public static ArrayList<Pasien> getDaftarPasienKlinik(){
+        return daftarPasienKlinik;
+    }
+    public static void setDaftarPasienKlinik(ArrayList<Pasien> daftarPasien){
+        daftarPasienKlinik = daftarPasien;
     }
 
     public static Pasien cariPasien(String noRM) {
-        for (int i = 0; i < daftarPasien.size(); i++) {
-            if (daftarPasien.get(i).getNik().equals(noRM)) {
-                return daftarPasien.get(i);
+        for (int i = 0; i < daftarPasienKlinik.size(); i++) {
+            if (getDaftarPasienKlinik().get(i).getNik().equals(noRM)) {
+                return getDaftarPasienKlinik().get(i);
             }
         }
         return null;
@@ -266,8 +272,8 @@ public class Pasien {
     public static void simpanDaftarPasien(File file) {
         try {
             FileOutputStream fos = new FileOutputStream(file);
-            for (int i = 0; i < daftarPasien.size(); i++) {
-                String data = daftarPasien.get(i).toString();
+            for (int i = 0; i < daftarPasienKlinik.size(); i++) {
+                String data = daftarPasienKlinik.get(i).toString();
                 fos.write(data.getBytes());
             }
             fos.close();
@@ -279,7 +285,7 @@ public class Pasien {
     }
 
     public static void bacaDaftarPasien(File file) {
-
+        throw new UnsupportedOperationException("Tidak ada");
     }
 
     public String toString() {

@@ -166,8 +166,8 @@ public class DaftarAntrianDialog extends JDialog implements ActionListener {
     public void actionPerformed(ActionEvent ae) {
         if (ae.getSource() == tanggalButton) {
             Pasien test = Pasien.cariPasien(noRekamMedisText.getText());
-            for (int i = 0; i < Pasien.daftarPasien.size(); i++) {
-                if (test == Pasien.daftarPasien.get(i)) {
+            for (int i = 0; i < Pasien.daftarPasienKlinik.size(); i++) {
+                if (test == Pasien.daftarPasienKlinik.get(i)) {
                     try {
                         Pasien pasien = new Pasien();
                         Klinik klinik = new Klinik();
