@@ -288,7 +288,7 @@ public class Pasien {
         }
     }
 
-    public static void bacaDaftarPasien(File file) {
+    public static void bacaDaftarPasien(File file) throws Exception {
         FileInputStream fos = null;
         try {
             String hasilBaca = "";
@@ -299,9 +299,27 @@ public class Pasien {
             boolean isAlamat = false;
             Pasien temp = new Pasien();
 
-            
-    }
-    }
+            while ((dataInt = fos.read()) != -1) {
+                if ((char) dataInt != '\n') {
+                    if ((char) dataInt != '\t' && isNoRM == false) {
+                        hasilBaca = hasilBaca + (char) dataInt;
+                    } else if ((char) dataInt == '\t' && isNoRM == false) {
+                        temp.setNoRekamMedis(hasilBaca);
+                        hasilBaca = "";
+                        isNoRM = true;
+                    } else if ((char) dataInt != '\t' && isNoRM == true && isNama == false) {
+                        hasilBaca = hasilBaca + (char) dataInt;
+                    } else if ((char) dataInt == '\t' && isNoRM == true && isNama == false) {
+                        temp.setNama(hasilBaca);
+                        hasilBaca = "";
+                        isNama = true;
+                    } else if ((char) dataInt != '\t' && isNoRM == true && isNama == true && isAlamat == false) {
+                        hasilBaca = hasilBaca + (char) dataInt;
+                    }
+                }
+            }
+        
+
     public String toString() {
         return noRekamMedis + "\t" + nama + "\t" + alamat + "\n";
     }
