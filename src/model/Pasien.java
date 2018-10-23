@@ -316,6 +316,17 @@ public class Pasien {
                     } else if ((char) dataInt != '\t' && isNoRM == true && isNama == true && isAlamat == false) {
                         hasilBaca = hasilBaca + (char) dataInt;
                     }
+                 } else {
+                    temp.setAlamat(hasilBaca);
+                    hasilBaca = "";
+                    isAlamat = true;
+                    Pasien.tambahPasienBaru(temp);
+                    isNoRM = false;
+                    isNama = false;
+                    isAlamat = false;
+                    temp = new Pasien();
+                }
+}
                 }
             }
         
