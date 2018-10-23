@@ -316,7 +316,7 @@ public class Pasien {
                     } else if ((char) dataInt != '\t' && isNoRM == true && isNama == true && isAlamat == false) {
                         hasilBaca = hasilBaca + (char) dataInt;
                     }
-                 } else {
+                } else {
                     temp.setAlamat(hasilBaca);
                     hasilBaca = "";
                     isAlamat = true;
@@ -326,11 +326,13 @@ public class Pasien {
                     isAlamat = false;
                     temp = new Pasien();
                 }
-}
-                }
             }
-        
+        } catch (FileNotFoundException ex) {
+            Logger.getLogger(TestStream2.class.getName()).log(Level.SEVERE, null, ex);
+        }
+    }
 
+    @Override
     public String toString() {
         return noRekamMedis + "\t" + nama + "\t" + alamat + "\n";
     }
