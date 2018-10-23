@@ -293,28 +293,28 @@ public class Pasien {
         try {
             String hasilBaca = "";
             fos = new FileInputStream(file);
-            int dataInt;
+            int data;
             boolean isNoRM = false;
             boolean isNama = false;
             boolean isAlamat = false;
             Pasien temp = new Pasien();
 
-            while ((dataInt = fos.read()) != -1) {
-                if ((char) dataInt != '\n') {
-                    if ((char) dataInt != '\t' && isNoRM == false) {
-                        hasilBaca = hasilBaca + (char) dataInt;
-                    } else if ((char) dataInt == '\t' && isNoRM == false) {
+            while ((data = fos.read()) != -1) {
+                if ((char) data != '\n') {
+                    if ((char) data != '\t' && isNoRM == false) {
+                        hasilBaca = hasilBaca + (char) data;
+                    } else if ((char) data == '\t' && isNoRM == false) {
                         temp.setNoRekamMedis(hasilBaca);
                         hasilBaca = "";
                         isNoRM = true;
-                    } else if ((char) dataInt != '\t' && isNoRM == true && isNama == false) {
-                        hasilBaca = hasilBaca + (char) dataInt;
-                    } else if ((char) dataInt == '\t' && isNoRM == true && isNama == false) {
+                    } else if ((char) data != '\t' && isNoRM == true && isNama == false) {
+                        hasilBaca = hasilBaca + (char) data;
+                    } else if ((char) data == '\t' && isNoRM == true && isNama == false) {
                         temp.setNama(hasilBaca);
                         hasilBaca = "";
                         isNama = true;
-                    } else if ((char) dataInt != '\t' && isNoRM == true && isNama == true && isAlamat == false) {
-                        hasilBaca = hasilBaca + (char) dataInt;
+                    } else if ((char) data != '\t' && isNoRM == true && isNama == true && isAlamat == false) {
+                        hasilBaca = hasilBaca + (char) data;
                     }
                 } else {
                     temp.setAlamat(hasilBaca);
