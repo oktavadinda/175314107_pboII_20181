@@ -21,15 +21,15 @@ public class TestStreaming1 {
     /**
      * @param args the command line arguments
      */
-        public static void main(String[] args) {
-        FileInputStream fos = null;
+    public static void main(String[] args) {
+        FileInputStream fis = null;
         try {
             File file = new File("test.txt"); // siapkan file sumber
             String hasilBaca = "";
-            fos = new FileInputStream(file);
+            fis = new FileInputStream(file);
             int dataInt;
 
-            while ((dataInt = fos.read()) != -1) {
+            while ((dataInt = fis.read()) != -1) {
                 if ((char) dataInt != '\n') {
                     hasilBaca = hasilBaca + (char) dataInt;
                 } else {
@@ -43,12 +43,11 @@ public class TestStreaming1 {
             Logger.getLogger(TestStreaming1.class.getName()).log(Level.SEVERE, null, ex);
         } finally {
             try {
-                fos.close();
+                fis.close();
             } catch (IOException ex) {
                 Logger.getLogger(TestStreaming1.class.getName()).log(Level.SEVERE, null, ex);
             }
-        }
-
 }
+    }
     
 }
