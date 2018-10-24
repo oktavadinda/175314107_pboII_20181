@@ -6,6 +6,7 @@
 package model;
 
 import TestView.TestStream2;
+import TestView.TestStreaming1;
 import java.io.File;
 import java.io.FileInputStream;
 import java.io.FileNotFoundException;
@@ -329,6 +330,14 @@ public class Pasien {
             }
         } catch (FileNotFoundException ex) {
             Logger.getLogger(TestStream2.class.getName()).log(Level.SEVERE, null, ex);
+        } catch (IOException ex) {
+            Logger.getLogger(TestStreaming1.class.getName()).log(Level.SEVERE, null, ex);
+        } finally {
+            try {
+                fos.close();
+            } catch (IOException ex) {
+                Logger.getLogger(TestStreaming1.class.getName()).log(Level.SEVERE, null, ex);
+            }
         }
     }
 
