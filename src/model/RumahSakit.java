@@ -36,7 +36,7 @@ public class RumahSakit {
     }
 
     public void tambahPasien(Pasien pasien) {
-        getDaftarPasien().add(pasien); 
+        getDaftarPasien().add(pasien);
     }
 
     public Pasien cariPasien(String noRM) {
