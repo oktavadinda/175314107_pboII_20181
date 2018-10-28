@@ -13,7 +13,7 @@ import model.Pasien;
  * @author admin
  */
 public class TestStream2 {
-    public static void main(String[] args) {
+    public static void main(String[] args) throws Exception {
         Pasien.bacaDaftarPasien(new File("daftar.txt"));
         for (int i = 0; i < Pasien.bacaDaftarPasien(file).size; i++) {
             System.out.println(Pasien.getDaftarPasienKlinik().get(i).toString());
