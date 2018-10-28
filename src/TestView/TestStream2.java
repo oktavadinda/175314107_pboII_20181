@@ -6,6 +6,7 @@
 package TestView;
 
 import java.io.File;
+import java.io.IOException;
 import model.Pasien;
 
 /**
@@ -15,7 +16,7 @@ import model.Pasien;
 public class TestStream2 {
     public static void main(String[] args) throws Exception {
         Pasien.bacaDaftarPasien(new File("daftar.txt"));
-        for (int i = 0; i < Pasien.bacaDaftarPasien(file).size; i++) {
+        for (int i = 0; i < Pasien.getDaftarPasienKlinik().size(); i++) {
             System.out.println(Pasien.getDaftarPasienKlinik().get(i).toString());
            
         }
