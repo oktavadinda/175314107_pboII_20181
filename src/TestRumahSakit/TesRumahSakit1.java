@@ -6,6 +6,7 @@
 package TestRumahSakit;
 
 import java.io.File;
+import java.io.IOException;
 import model.Pasien;
 import model.RumahSakit;
 
@@ -14,7 +15,7 @@ import model.RumahSakit;
  * @author admin
  */
 public class TesRumahSakit1 {
-    public static void main(String[] args) {
+    public static void main(String[] args) throws IOException {
         Pasien pasien1 = new Pasien();
         pasien1.setNama("Puspa");
         pasien1.setAlamat("klaten");
