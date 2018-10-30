@@ -102,10 +102,15 @@ public class RumahSakit {
     public void simpanObjekRumahSakit(File file) throws IOException {
         try {
             FileOutputStream fos = new FileOutputStream(file);
-            ObjectOutputStream os = new ObjectOutputStream(fos);
-            os.writeObject(this);
+            for (int i = 0; i < getDaftarPasien().size(); i++) {
+                String data = getDaftarPasien().get(i).toString();
+                fos.write(data.getBytes());
+            }
+            fos.close();
         } catch (FileNotFoundException ex) {
             Logger.getLogger(RumahSakit.class.getName()).log(Level.SEVERE, null, ex);
+        } catch (IOException e){
+            Logger.getLogger(RumahSakit.class.getName()).log(Level.SEVERE, null, e);
         }
     }
 
