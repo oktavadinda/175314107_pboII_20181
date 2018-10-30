@@ -262,13 +262,13 @@ public class Pasien {
     }
 
     public static void setDaftarPasienKlinik(ArrayList<Pasien> daftarPasien) {
-        daftarPasienKlinik = daftarPasien;
+        Pasien.daftarPasienKlinik = daftarPasien;
     }
 
     public static Pasien cariPasien(String noRM) {
         for (int i = 0; i < daftarPasienKlinik.size(); i++) {
-            if (getDaftarPasienKlinik().get(i).getNik().equals(noRM)) {
-                return getDaftarPasienKlinik().get(i);
+            if (daftarPasienKlinik.get(i).NIK.equals(noRM)) {
+                return daftarPasienKlinik.get(i);
             }
         }
         return null;
@@ -302,20 +302,18 @@ public class Pasien {
 
             while ((data = fos.read()) != -1) {
                 if ((char) data != '\n') {
-                    if ((char) data != '\t' && isNoRM == false) {
+                    if ((char) data != '\t') {
                         hasilBaca = hasilBaca + (char) data;
-                    } else if ((char) data == '\t' && isNoRM == false) {
-                        temp.setNoRekamMedis(hasilBaca);
-                        hasilBaca = "";
-                        isNoRM = true;
-                    } else if ((char) data != '\t' && isNoRM == true && isNama == false) {
-                        hasilBaca = hasilBaca + (char) data;
-                    } else if ((char) data == '\t' && isNoRM == true && isNama == false) {
-                        temp.setNama(hasilBaca);
-                        hasilBaca = "";
-                        isNama = true;
-                    } else if ((char) data != '\t' && isNoRM == true && isNama == true && isAlamat == false) {
-                        hasilBaca = hasilBaca + (char) data;
+                    } else {
+                        if (isNoRM == false) {
+                            temp.setNoRekamMedis(hasilBaca);
+                            isNoRM = true;
+                            hasilBaca = "";
+                        } else if (isNama == false) {
+                            temp.setNama(hasilBaca);
+                            isNama = true;
+                            hasilBaca = "";
+                        }
                     }
                 } else {
                     temp.setAlamat(hasilBaca);
