@@ -10,6 +10,7 @@ import java.io.FileInputStream;
 import java.io.FileNotFoundException;
 import java.io.FileOutputStream;
 import java.io.IOException;
+import java.io.ObjectInputStream;
 import java.io.ObjectOutputStream;
 import java.util.ArrayList;
 import java.util.logging.Level;
@@ -99,17 +100,31 @@ public class RumahSakit {
     }
 
     public void simpanObjekRumahSakit(File file) throws IOException {
-         try {
+        try {
             FileOutputStream fos = new FileOutputStream(file);
             ObjectOutputStream os = new ObjectOutputStream(fos);
             os.writeObject(this);
         } catch (FileNotFoundException ex) {
             Logger.getLogger(RumahSakit.class.getName()).log(Level.SEVERE, null, ex);
-}
+        }
     }
 
-    public void bacaObjekRumahSakit(File file) {
-        
+    public void bacaObjekRumahSakit(File file) throws IOException {
+        try {
+            FileInputStream fis = new FileInputStream(file);
+            ObjectInputStream is = new ObjectInputStream(fis);
+            RumahSakit rs = (RumahSakit) is.readObject();
+            this.nama = rs.nama;
+            this.alamat = rs.alamat;
+            this.daftarAntrianKlinik = rs.daftarAntrianKlinik;
+            this.daftarKlinik = rs.daftarKlinik;
+            this.daftarPasien = rs.daftarPasien;
+        } catch (FileNotFoundException ex) {
+            Logger.getLogger(RumahSakit.class.getName()).log(Level.SEVERE, null, ex);
+        } catch (ClassNotFoundException ex) {
+            Logger.getLogger(RumahSakit.class.getName()).log(Level.SEVERE, null, ex);
+        }
+
     }
 
     /**
@@ -186,7 +201,7 @@ public class RumahSakit {
         }
     }
 
-    public int cariAntrian(int tanggal,int bulan,int tahun,Klinik klinik) {
+    public int cariAntrian(int tanggal, int bulan, int tahun, Klinik klinik) {
         for (int i = 0; i < daftarAntrianKlinik.size(); i++) {
             if (daftarAntrianKlinik.get(i).getTanggalAntrian() == tanggal
                     && daftarAntrianKlinik.get(i).getBulanAntrian() == bulan
@@ -195,18 +210,18 @@ public class RumahSakit {
                     && daftarAntrianKlinik.get(i).getKlinik().getIdKlinik().equalsIgnoreCase(klinik.getIdKlinik())) {
                 return i;
             }
-}
+        }
         return -1; // index list
     }
 
-    public void daftarPasien(Pasien pasien,int tanggal,int bulan,int tahun, Klinik klinik) {
+    public void daftarPasien(Pasien pasien, int tanggal, int bulan, int tahun, Klinik klinik) {
         if (cariAntrian(tanggal, bulan, tahun, klinik) >= 0) {
             daftarAntrianKlinik.get(cariAntrian(tanggal, bulan, tahun, klinik)).mendaftar(pasien);
 
         } else {
             buatAntrian(tanggal, bulan, tahun, klinik);
             daftarAntrianKlinik.get(cariAntrian(tanggal, bulan, tahun, klinik)).mendaftar(pasien);
-}
+        }
         // cari antrian ada apa tidak
         // jika ada
         // panggil fungsi mendaftar dari objek antrian
