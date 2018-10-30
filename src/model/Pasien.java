@@ -167,14 +167,17 @@ public class Pasien {
      * @param noRekamMedis
      * @throws Exception
      */
-    public void setNoRekamMedis(String noRekamMedis) throws Exception {//buat method setNoRekamMedis menggunakan throws Exception
-        //buat looping menggunakan if dengan parameter no rekam medis  dari 6-20
-        if (noRekamMedis.length() == 16) {
-            this.noRekamMedis = noRekamMedis;
-        } else {
-            throw new Exception("Nomor Rekam Medis anda Salah");
-        }
-
+//    public void setNoRekamMedis(String noRekamMedis) throws Exception {//buat method setNoRekamMedis menggunakan throws Exception
+//        //buat looping menggunakan if dengan parameter no rekam medis  dari 6-20
+//        if (noRekamMedis.length() == 16) {
+//            this.noRekamMedis = noRekamMedis;
+//        } else {
+//            throw new Exception("Nomor Rekam Medis anda Salah");
+//        }
+//
+//    }
+    public void setNoRekamMedis(String noRekamMedis){
+        this.noRekamMedis = noRekamMedis;
     }
 
     /**
@@ -255,6 +258,14 @@ public class Pasien {
 
     public static void tambahPasienBaru(Pasien pasien) {
         daftarPasienKlinik.add(pasien);
+    }
+
+    public String BuatNomorRekamMedis() {
+        String nomorRekamMEdis;
+        Date date = new Date();
+        SimpleDateFormat ft = new SimpleDateFormat("yyyMMdd");
+        nomorRekamMEdis = ft.format(date) + nama.substring(0, 3);
+        return nomorRekamMEdis;
     }
 
     public static ArrayList<Pasien> getDaftarPasienKlinik() {
